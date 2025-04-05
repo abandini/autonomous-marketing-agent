@@ -1,0 +1,69 @@
+{
+    "approval_dir": "data/approvals",
+    "strategy_dir": "data/strategies",
+    "compliance_dir": "data/compliance",
+    "notification_channels": ["email", "dashboard", "slack"],
+    "approval_thresholds": {
+        "budget": 1000,
+        "pricing_change": 0.15,
+        "content_risk": 0.7,
+        "experiment_risk": 0.6
+    },
+    "compliance_requirements": {
+        "gdpr": true,
+        "ccpa": true,
+        "affiliate_disclosure": true,
+        "ad_disclosure": true,
+        "email_unsubscribe": true,
+        "data_retention": true
+    },
+    "operator_roles": {
+        "admin": {
+            "can_approve_all": true,
+            "can_modify_strategy": true,
+            "can_configure_system": true
+        },
+        "marketing_manager": {
+            "can_approve_content": true,
+            "can_approve_experiments": true,
+            "can_modify_channel_mix": true,
+            "budget_approval_limit": 5000
+        },
+        "compliance_officer": {
+            "can_approve_compliance": true,
+            "can_configure_compliance": true,
+            "can_override_content": true
+        },
+        "finance_manager": {
+            "can_approve_budget": true,
+            "can_approve_pricing": true,
+            "can_view_financial_reports": true
+        }
+    },
+    "notification_settings": {
+        "email": {
+            "enabled": true,
+            "recipients": ["marketing@example.com", "compliance@example.com"],
+            "urgent_recipients": ["ceo@example.com", "cto@example.com"]
+        },
+        "dashboard": {
+            "enabled": true,
+            "refresh_interval": 300
+        },
+        "slack": {
+            "enabled": true,
+            "channels": {
+                "general": "marketing-automation",
+                "urgent": "marketing-urgent",
+                "compliance": "compliance-alerts"
+            }
+        }
+    },
+    "review_periods": {
+        "content": 24,
+        "experiment": 48,
+        "budget": 72,
+        "compliance": 24,
+        "strategy": 168
+    }
+}

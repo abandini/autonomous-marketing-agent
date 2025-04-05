@@ -1,0 +1,30 @@
+{
+    "repositories": [
+        {
+            "name": "marketing-website",
+            "repo_url": "https://github.com/example/marketing-website.git",
+            "local_path": "data/repositories/marketing-website",
+            "default_branch": "main",
+            "update_frequency": "daily",
+            "performance_threshold": 0.05,
+            "auto_commit": true,
+            "auto_push": false,
+            "update_types": ["content", "meta", "structure"],
+            "excluded_files": ["config.js", "sensitive.json"],
+            "testing_branch": "testing"
+        }
+    ],
+    "auth": {
+        "username": "",
+        "token_env_var": "GIT_ACCESS_TOKEN"
+    },
+    "notification": {
+        "email_on_update": true,
+        "slack_webhook": ""
+    },
+    "deployment": {
+        "trigger_ci_cd": true,
+        "deployment_branch": "production",
+        "require_approval": true
+    }
+}

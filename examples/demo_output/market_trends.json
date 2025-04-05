@@ -1,0 +1,16 @@
+{
+  "total_trends": 0,
+  "trends_by_category": {},
+  "trend_gaps": [
+    {
+      "trend_name": "Subscription Economy Growth",
+      "competitor_name": "Umbrella Marketing Technologies",
+      "gap_to_leader": 0.7000000000000001
+    },
+    {
+      "trend_name": "Subscription Economy Growth",
+      "competitor_name": "Globex Marketing",
+      "gap_to_leader": 0.5
+    }
+  ]
+}

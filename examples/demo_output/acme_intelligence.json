@@ -1,0 +1,131 @@
+{
+  "competitor_id": "comp_acme",
+  "name": "Acme Corporation",
+  "profile": {
+    "website": "https://www.acmecorp.example",
+    "industry": "Marketing Technology",
+    "key_products": [
+      "Acme Marketing Cloud",
+      "Acme Analytics Suite",
+      "Acme Campaign Manager"
+    ],
+    "target_markets": [
+      "Enterprise",
+      "Mid-Market"
+    ]
+  },
+  "market_position": {
+    "market_share": 0.28,
+    "price_position": 0.8,
+    "quality_position": 0.9,
+    "innovation_position": 0.7,
+    "customer_sentiment": 0.7,
+    "share_of_voice": 0.32,
+    "unique_selling_points": [
+      "Brand recognition",
+      "Product breadth",
+      "Enterprise relationships"
+    ]
+  },
+  "behavior_patterns": [
+    {
+      "pattern_id": "pricing_seasonal_comp_acme",
+      "name": "Seasonal Discount Pattern",
+      "pattern_type": "pricing",
+      "confidence": 0.7
+    },
+    {
+      "pattern_id": "release_cycle_comp_acme",
+      "name": "180-Day Release Cycle",
+      "pattern_type": "release",
+      "confidence": 0.7
+    },
+    {
+      "pattern_id": "marketing_event_comp_acme",
+      "name": "Event-Based Marketing Pattern",
+      "pattern_type": "marketing",
+      "confidence": 0.65
+    },
+    {
+      "pattern_id": "seasonal_comp_acme",
+      "name": "End-of-Year Pattern",
+      "pattern_type": "seasonal",
+      "confidence": 0.65
+    }
+  ],
+  "upcoming_actions": [
+    {
+      "prediction_id": "pred_release_comp_acme_omp_acme",
+      "action_type": "minor_product_release",
+      "description": "Minor product/feature release from Acme Corporation",
+      "probability": 0.595,
+      "expected_date": "2025-04-15T10:57:38.418252"
+    }
+  ],
+  "recent_events": [
+    {
+      "event_id": "event_comp_acme_product_launch_2740",
+      "title": "Acme Launches AI-Powered Marketing Assistant",
+      "date": "2025-02-19T10:57:38.419489",
+      "event_type": "product_launch",
+      "impact_level": "high"
+    },
+    {
+      "event_id": "event_comp_acme_price_change_7595",
+      "title": "Acme Increases Enterprise Pricing by 12%",
+      "date": "2025-01-05T10:57:38.419494",
+      "event_type": "price_change",
+      "impact_level": "medium"
+    }
+  ],
+  "key_insights": [
+    {
+      "id": "insight_event_75779f0a",
+      "title": "Product Launch by Acme Corporation",
+      "insight_type": "competitor",
+      "priority": 4
+    },
+    {
+      "id": "insight_event_361370d0",
+      "title": "Price Change by Acme Corporation",
+      "insight_type": "competitor",
+      "priority": 3
+    }
+  ],
+  "summary": {
+    "competitor_id": "comp_acme",
+    "total_events": 2,
+    "total_insights": 2,
+    "recent_events": [
+      {
+        "date": "2025-02-19 10:57:38.419489",
+        "title": "Acme Launches AI-Powered Marketing Assistant",
+        "type": "product_launch"
+      },
+      {
+        "date": "2025-01-05 10:57:38.419494",
+        "title": "Acme Increases Enterprise Pricing by 12%",
+        "type": "price_change"
+      }
+    ],
+    "key_insights": [
+      {
+        "title": "Product Launch by Acme Corporation",
+        "priority": 4,
+        "type": "competitor"
+      },
+      {
+        "title": "Price Change by Acme Corporation",
+        "priority": 3,
+        "type": "competitor"
+      }
+    ],
+    "event_type_distribution": {
+      "product_launch": 1,
+      "price_change": 1
+    },
+    "insight_type_distribution": {
+      "competitor": 2
+    }
+  }
+}

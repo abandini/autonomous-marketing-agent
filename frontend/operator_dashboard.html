@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Operator Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="operator_dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar">
+                <div class="d-flex align-items-center mb-4 px-3">
+                    <i class="bi bi-robot fs-2 me-2"></i>
+                    <h4 class="mb-0">GAMS Operator</h4>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
+                            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#approvals" data-bs-toggle="tab">
+                            <i class="bi bi-check-circle me-2"></i> Approvals
+                            <span class="badge bg-danger rounded-pill notification-badge">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#strategy" data-bs-toggle="tab">
+                            <i class="bi bi-graph-up me-2"></i> Strategy
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#compliance" data-bs-toggle="tab">
+                            <i class="bi bi-shield-check me-2"></i> Compliance
+                            <span class="badge bg-warning rounded-pill notification-badge">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#competitive-intelligence" data-bs-toggle="tab">
+                            <i class="bi bi-eye me-2"></i> Competitive Intelligence
+                            <span class="badge bg-info rounded-pill notification-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#financial" data-bs-toggle="tab">
+                            <i class="bi bi-cash-stack me-2"></i> Financial
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#configuration" data-bs-toggle="tab">
+                            <i class="bi bi-gear me-2"></i> Configuration
+                        </a>
+                    </li>
+                </ul>
+                <div class="mt-auto px-3 py-3 border-top">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/40" class="rounded-circle me-2">
+                        <div>
+                            <div class="fw-bold">Marketing Admin</div>
+                            <small class="text-muted">admin@example.com</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 main-content">
+                <div class="tab-content">
+                    <!-- Dashboard Tab -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">Operator Dashboard</h2>
+                            <div class="gams-control-panel">
+                                <div class="system-status me-3 d-inline-block">
+                                    <span class="status-indicator"></span>
+                                    <span class="status-text">System Status: </span>
+                                    <strong id="system-status-text">Stopped</strong>
+                                </div>
+                                <button id="gams-control-btn" class="btn btn-success btn-lg">
+                                    <i class="bi bi-play-fill me-1"></i> Start GAMS
+                                </button>
+                                <button id="direct-test-btn" class="btn btn-warning ms-2">Direct Test</button>
+                                <button id="direct-api-test" class="btn btn-outline-secondary ms-2" onclick="directApiTest(); return false;">
+                                    Test API Directly
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body financial-metric">
+                                        <p>Pending Approvals</p>
+                                        <h3 id="pending-approvals-count">0</h3>
+                                        <small class="text-muted" id="pending-approvals-details">No pending approvals</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body financial-metric">
+                                        <p>Active Experiments</p>
+                                        <h3 id="active-experiments-count">0</h3>
+                                        <small class="text-muted" id="active-experiments-details">No active experiments</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body financial-metric">
+                                        <p>Revenue (MTD)</p>
+                                        <h3 id="current-revenue">$0</h3>
+                                        <small class="text-muted" id="revenue-comparison">No data available</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body financial-metric">
+                                        <p>Compliance Issues</p>
+                                        <h3 id="compliance-issues-count">0</h3>
+                                        <small class="text-muted" id="compliance-issues-details">No compliance issues</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Recent Activity</h5>
+                                        <button class="btn btn-sm btn-outline-secondary">View All</button>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush" id="recent-activity-list">
+                                            <li class="list-group-item text-center text-muted">
+                                                <i class="bi bi-info-circle me-2"></i>
+                                                No recent activity to display
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Urgent Approvals</h5>
+                                        <button class="btn btn-sm btn-outline-danger">View All</button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="approval-card urgent p-3 mb-3">
+                                            <div class="d-flex justify-content-between">
+                                                <h6>Budget Increase Request</h6>
+                                                <span class="badge bg-danger">Urgent</span>
+                                            </div>
+                                            <p class="mb-2">Facebook Ad Campaign - $2,500 increase</p>
+                                            <small class="text-muted">Requested 3 hours ago</small>
+                                            <div class="mt-2 approval-actions">
+                                                <button class="btn btn-sm btn-success">Approve</button>
+                                                <button class="btn btn-sm btn-danger">Reject</button>
+                                                <button class="btn btn-sm btn-primary">Modify</button>
+                                            </div>
+                                        </div>
+                                        <div class="approval-card critical p-3">
+                                            <div class="d-flex justify-content-between">
+                                                <h6>Pricing Strategy Change</h6>
+                                                <span class="badge bg-danger">Critical</span>
+                                            </div>
+                                            <p class="mb-2">20% discount on Premium Plan</p>
+                                            <small class="text-muted">Requested 1 hour ago</small>
+                                            <div class="mt-2 approval-actions">
+                                                <button class="btn btn-sm btn-success">Approve</button>
+                                                <button class="btn btn-sm btn-danger">Reject</button>
+                                                <button class="btn btn-sm btn-primary">Modify</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Approvals Tab -->
+                    <div class="tab-pane fade" id="approvals">
+                        <h2 class="mb-4">Pending Approvals</h2>
+                        
+                        <ul class="nav nav-tabs" id="approvalTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">
+                                    All <span class="badge bg-secondary">5</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="experiments-tab" data-bs-toggle="tab" data-bs-target="#experiments" type="button" role="tab">
+                                    Experiments <span class="badge bg-secondary">2</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content" type="button" role="tab">
+                                    Content <span class="badge bg-secondary">1</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget" type="button" role="tab">
+                                    Budget <span class="badge bg-secondary">1</span>
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="compliance-tab" data-bs-toggle="tab" data-bs-target="#compliance-approvals" type="button" role="tab">
+                                    Compliance <span class="badge bg-secondary">1</span>
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="approvalTabsContent">
+                            <div class="tab-pane fade show active" id="all" role="tabpanel">
+                                <div class="approval-card p-3 mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>A/B Test: Homepage Hero Section</h6>
+                                        <span class="badge bg-primary">Experiment</span>
+                                    </div>
+                                    <p class="mb-2">Testing 3 variations of hero messaging for conversion rate</p>
+                                    <small class="text-muted">Requested 5 hours ago</small>
+                                    <div class="mt-2 approval-actions">
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                        <button class="btn btn-sm btn-primary">View Details</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="approval-card urgent p-3 mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>Budget Increase Request</h6>
+                                        <span class="badge bg-danger">Urgent</span>
+                                    </div>
+                                    <p class="mb-2">Facebook Ad Campaign - $2,500 increase</p>
+                                    <small class="text-muted">Requested 3 hours ago</small>
+                                    <div class="mt-2 approval-actions">
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                        <button class="btn btn-sm btn-primary">Modify</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="approval-card p-3 mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>New Blog Post: "10 Ways to Optimize Your Marketing"</h6>
+                                        <span class="badge bg-info">Content</span>
+                                    </div>
+                                    <p class="mb-2">2,500 word article on marketing optimization strategies</p>
+                                    <small class="text-muted">Requested 12 hours ago</small>
+                                    <div class="mt-2 approval-actions">
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                        <button class="btn btn-sm btn-primary">View Content</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="approval-card critical p-3 mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>Pricing Strategy Change</h6>
+                                        <span class="badge bg-danger">Critical</span>
+                                    </div>
+                                    <p class="mb-2">20% discount on Premium Plan</p>
+                                    <small class="text-muted">Requested 1 hour ago</small>
+                                    <div class="mt-2 approval-actions">
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                        <button class="btn btn-sm btn-primary">Modify</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="approval-card p-3 mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>GDPR Compliance Check</h6>
+                                        <span class="badge bg-warning">Compliance</span>
+                                    </div>
+                                    <p class="mb-2">Review new email marketing flow for GDPR compliance</p>
+                                    <small class="text-muted">Requested 8 hours ago</small>
+                                    <div class="mt-2 approval-actions">
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                        <button class="btn btn-sm btn-primary">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Other approval tabs would go here -->
+                        </div>
+                    </div>
+
+                    <!-- Strategy Tab -->
+                    <div class="tab-pane fade" id="strategy">
+                        <h2 class="mb-4">Strategy Management</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Revenue Targets</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="strategy-form">
+                                            <div class="mb-3">
+                                                <label for="monthlyTarget" class="form-label">Monthly Revenue Target</label>
+                                                <input type="number" class="form-control" id="monthlyTarget" value="50000">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="quarterlyTarget" class="form-label">Quarterly Revenue Target</label>
+                                                <input type="number" class="form-control" id="quarterlyTarget" value="150000">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="annualTarget" class="form-label">Annual Revenue Target</label>
+                                                <input type="number" class="form-control" id="annualTarget" value="600000">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update Targets</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Channel Mix</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="strategy-form">
+                                            <div class="mb-3">
+                                                <label for="organicAllocation" class="form-label">Organic (% of budget)</label>
+                                                <input type="range" class="form-range" id="organicAllocation" min="0" max="100" value="30">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>0%</span>
+                                                    <span id="organicValue">30%</span>
+                                                    <span>100%</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="paidAllocation" class="form-label">Paid Ads (% of budget)</label>
+                                                <input type="range" class="form-range" id="paidAllocation" min="0" max="100" value="40">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>0%</span>
+                                                    <span id="paidValue">40%</span>
+                                                    <span>100%</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="emailAllocation" class="form-label">Email (% of budget)</label>
+                                                <input type="range" class="form-range" id="emailAllocation" min="0" max="100" value="15">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>0%</span>
+                                                    <span id="emailValue">15%</span>
+                                                    <span>100%</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="affiliateAllocation" class="form-label">Affiliate (% of budget)</label>
+                                                <input type="range" class="form-range" id="affiliateAllocation" min="0" max="100" value="15">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>0%</span>
+                                                    <span id="affiliateValue">15%</span>
+                                                    <span>100%</span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update Channel Mix</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Affiliate Partners</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Partner</th>
+                                                        <th>Commission Rate</th>
+                                                        <th>Status</th>
+                                                        <th>Monthly Revenue</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Marketing Pro Blog</td>
+                                                        <td>15%</td>
+                                                        <td><span class="badge bg-success">Active</span></td>
+                                                        <td>$3,250</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-danger">Deactivate</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Digital Marketing Academy</td>
+                                                        <td>20%</td>
+                                                        <td><span class="badge bg-success">Active</span></td>
+                                                        <td>$5,120</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-danger">Deactivate</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SEO Experts Network</td>
+                                                        <td>12%</td>
+                                                        <td><span class="badge bg-warning">Pending</span></td>
+                                                        <td>$0</td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-success">Activate</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <button class="btn btn-primary mt-3">Add New Partner</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configuration Tab -->
+                    <div class="tab-pane fade" id="configuration">
+                        <h2 class="mb-4">System Configuration</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">General Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="generalSettingsForm">
+                                            <div class="mb-3">
+                                                <label for="systemName" class="form-label">System Name</label>
+                                                <input type="text" class="form-control" id="systemName" value="GAMS v1.0">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="operatorEmail" class="form-label">Operator Email</label>
+                                                <input type="email" class="form-control" id="operatorEmail" value="admin@example.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="notificationLevel" class="form-label">Notification Level</label>
+                                                <select class="form-select" id="notificationLevel">
+                                                    <option value="all">All Notifications</option>
+                                                    <option value="important" selected>Important Only</option>
+                                                    <option value="critical">Critical Only</option>
+                                                    <option value="none">None</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="refreshInterval" class="form-label">Dashboard Refresh Interval (seconds)</label>
+                                                <input type="number" class="form-control" id="refreshInterval" value="60" min="30" max="300">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save General Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">API Configuration</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="apiConfigForm">
+                                            <div class="mb-3">
+                                                <label for="apiKey" class="form-label">API Key</label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control" id="apiKey" value="sk_test_51JKl2m3n4o5p6q7r8s9t0u1v2w3x4y5z6A7B8C9D0">
+                                                    <button class="btn btn-outline-secondary" type="button" id="showApiKey">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="apiEndpoint" class="form-label">API Endpoint</label>
+                                                <input type="text" class="form-control" id="apiEndpoint" value="https://api.gams.example.com/v1">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="requestTimeout" class="form-label">Request Timeout (seconds)</label>
+                                                <input type="number" class="form-control" id="requestTimeout" value="30" min="5" max="120">
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableRateLimiting" checked>
+                                                <label class="form-check-label" for="enableRateLimiting">Enable Rate Limiting</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save API Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Website & Repository Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="websiteRepoSettingsForm">
+                                            <div class="mb-3">
+                                                <label for="websiteUrl" class="form-label">Website URL</label>
+                                                <input type="url" class="form-control" id="websiteUrl" placeholder="https://your-website.netlify.app">
+                                                <div class="form-text">The URL of the website hosted on Netlify</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="gitRepoUrl" class="form-label">Git Repository URL</label>
+                                                <input type="url" class="form-control" id="gitRepoUrl" placeholder="https://github.com/username/repository">
+                                                <div class="form-text">The URL of the Git repository with full read/write access</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="gitUsername" class="form-label">Git Username</label>
+                                                <input type="text" class="form-control" id="gitUsername" placeholder="Your Git username">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="gitToken" class="form-label">Git Access Token</label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control" id="gitToken" placeholder="Your Git personal access token">
+                                                    <button class="btn btn-outline-secondary" type="button" id="showGitToken">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="form-text">Personal access token with repo scope permissions</div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Website & Repository Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Integration Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="integrationSettingsForm">
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableGoogleAnalytics" checked>
+                                                <label class="form-check-label" for="enableGoogleAnalytics">Google Analytics</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableGoogleSearchConsole" checked>
+                                                <label class="form-check-label" for="enableGoogleSearchConsole">Google Search Console</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableAhrefs">
+                                                <label class="form-check-label" for="enableAhrefs">Ahrefs</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableSemrush">
+                                                <label class="form-check-label" for="enableSemrush">SEMrush</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableMailchimp" checked>
+                                                <label class="form-check-label" for="enableMailchimp">Mailchimp</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Integration Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Advanced Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="advancedSettingsForm">
+                                            <div class="mb-3">
+                                                <label for="logLevel" class="form-label">Log Level</label>
+                                                <select class="form-select" id="logLevel">
+                                                    <option value="debug">Debug</option>
+                                                    <option value="info" selected>Info</option>
+                                                    <option value="warning">Warning</option>
+                                                    <option value="error">Error</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="maxConcurrentTasks" class="form-label">Max Concurrent Tasks</label>
+                                                <input type="number" class="form-control" id="maxConcurrentTasks" value="5" min="1" max="20">
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableDebugMode">
+                                                <label class="form-check-label" for="enableDebugMode">Enable Debug Mode</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enablePerformanceMetrics" checked>
+                                                <label class="form-check-label" for="enablePerformanceMetrics">Enable Performance Metrics</label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Advanced Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competitive Intelligence Tab -->
+                    <div class="tab-pane fade" id="competitive-intelligence">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">Competitive Intelligence</h2>
+                            <div>
+                                <button id="refresh-competitive-intelligence" class="btn btn-outline-primary">
+                                    <i class="bi bi-arrow-clockwise me-1"></i> Refresh Data
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Competitive Intelligence Dashboard -->
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <iframe id="competitive-intelligence-frame" src="/competitive-intelligence" 
+                                            style="width: 100%; height: 800px; border: none;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other tabs would go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="operator_dashboard.js"></script>
+</body>
+</html>

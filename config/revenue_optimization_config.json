@@ -1,0 +1,84 @@
+{
+    "optimization_interval": 3600,
+    "state_update_interval": 900,
+    "experiment_check_interval": 1800,
+    "model_save_interval": 86400,
+    "model_save_path": "models/revenue_optimization",
+    "experiment_save_path": "data/experiments",
+    "max_optimization_iterations": 1000,
+    "data_sources": {
+        "analytics": true,
+        "financial": true,
+        "marketing": true,
+        "content": true,
+        "affiliate": true
+    },
+    "action_handlers": {
+        "content": true,
+        "pricing": true,
+        "advertising": true,
+        "seo": true,
+        "affiliate": true
+    },
+    "constraints": {
+        "max_budget_per_day": 1000,
+        "min_profit_margin": 0.2,
+        "max_risk_level": 0.5
+    },
+    "rl_engine_config": {
+        "learning_rate": 0.01,
+        "discount_factor": 0.95,
+        "exploration_rate": 0.1,
+        "exploration_decay": 0.995,
+        "min_exploration_rate": 0.01,
+        "batch_size": 32,
+        "memory_size": 10000,
+        "update_frequency": 4,
+        "target_update_frequency": 1000,
+        "action_space": {
+            "content_type": ["blog", "video", "infographic", "case_study", "whitepaper"],
+            "pricing": {
+                "min": 0.8,
+                "max": 1.2,
+                "step": 0.05
+            },
+            "ad_spend": {
+                "min": 0.5,
+                "max": 2.0,
+                "step": 0.1
+            },
+            "seo_tactic": ["keyword_optimization", "backlink_building", "content_refresh", "technical_seo"],
+            "affiliate_action": ["increase_commission", "add_partners", "optimize_landing_pages"]
+        },
+        "reward_weights": {
+            "revenue": 0.6,
+            "profit": 0.3,
+            "growth": 0.1
+        }
+    },
+    "experiment_manager_config": {
+        "default_experiment_duration": 604800,
+        "min_sample_size": 100,
+        "confidence_threshold": 0.95,
+        "max_active_experiments": 5,
+        "experiment_types": {
+            "a_b_test": {
+                "variants": 2,
+                "traffic_allocation": [0.5, 0.5]
+            },
+            "multivariate_test": {
+                "max_variants": 8,
+                "equal_allocation": true
+            },
+            "bandit_optimization": {
+                "arms": 5,
+                "algorithm": "thompson_sampling",
+                "update_frequency": 3600
+            }
+        },
+        "metrics": {
+            "primary": "revenue",
+            "secondary": ["conversion_rate", "profit_margin", "customer_acquisition_cost"]
+        }
+    }
+}

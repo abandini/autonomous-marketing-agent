@@ -1,0 +1,27 @@
+{
+  "total_recommendations": 3,
+  "recommendations": [
+    {
+      "type": "opportunity",
+      "trigger": "Market opportunity: Voice-Activated Interface",
+      "description": "Develop voice-activated features ahead of market adoption curve",
+      "urgency": "medium",
+      "actions": []
+    },
+    {
+      "type": "opportunity",
+      "trigger": "Market opportunity: AI-Powered Predictive Analytics",
+      "description": "Be first to market with advanced predictive analytics using latest AI techniques",
+      "urgency": "medium",
+      "actions": []
+    },
+    {
+      "type": "opportunity",
+      "trigger": "Market opportunity: Blockchain-Based Security Solution",
+      "description": "Implement blockchain technology for enhanced security before competitors",
+      "urgency": "medium",
+      "actions": []
+    }
+  ],
+  "generated_at": "2025-04-05T10:57:38.426589"
+}

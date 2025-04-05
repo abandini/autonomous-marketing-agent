@@ -1,0 +1,50 @@
+{
+  "metrics_3b223ca0": {
+    "id": "metrics_3b223ca0",
+    "timestamp": "Email Marketing",
+    "source": null,
+    "metrics": {
+      "revenue": 12500.0,
+      "conversions": 250,
+      "cost": 2500.0,
+      "ctr": 0.025,
+      "conversion_rate": 0.035
+    }
+  },
+  "metrics_fae5bfe6": {
+    "id": "metrics_fae5bfe6",
+    "timestamp": "Social Media",
+    "source": null,
+    "metrics": {
+      "revenue": 8750.0,
+      "conversions": 175,
+      "cost": 3500.0,
+      "ctr": 0.018,
+      "conversion_rate": 0.022
+    }
+  },
+  "metrics_715eb43b": {
+    "id": "metrics_715eb43b",
+    "timestamp": "Search Marketing",
+    "source": null,
+    "metrics": {
+      "revenue": 15000.0,
+      "conversions": 120,
+      "cost": 5000.0,
+      "ctr": 0.032,
+      "conversion_rate": 0.028
+    }
+  },
+  "metrics_8f951174": {
+    "id": "metrics_8f951174",
+    "timestamp": "Affiliate Marketing",
+    "source": null,
+    "metrics": {
+      "revenue": 9500.0,
+      "conversions": 95,
+      "cost": 2850.0,
+      "ctr": 0.021,
+      "conversion_rate": 0.019
+    }
+  }
+}

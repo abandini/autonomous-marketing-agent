@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Control Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>GAMS Control Test</h1>
+    <p>This page tests the GAMS control API endpoint directly.</p>
+    
+    <div>
+        <button id="startButton">Start GAMS</button>
+        <button id="stopButton">Stop GAMS</button>
+    </div>
+    
+    <div>
+        <h3>Result:</h3>
+        <pre id="result">Click a button to see results...</pre>
+    </div>
+    
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            testGamsControl('start');
+        });
+        
+        document.getElementById('stopButton').addEventListener('click', function() {
+            testGamsControl('stop');
+        });
+        
+        function testGamsControl(action) {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `Sending ${action} request...`;
+            
+            fetch('/api/operator/system/control', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action })
+            })
+            .then(response => {
+                resultElement.textContent += `\nResponse status: ${response.status}`;
+                return response.text();
+            })
+            .then(text => {
+                resultElement.textContent += `\nResponse text: ${text}`;
+                try {
+                    const data = JSON.parse(text);
+                    resultElement.textContent += `\nParsed data: ${JSON.stringify(data, null, 2)}`;
+                } catch (e) {
+                    resultElement.textContent += `\nError parsing JSON: ${e.message}`;
+                }
+            })
+            .catch(error => {
+                resultElement.textContent += `\nError: ${error.message}`;
+            });
+        }
+    </script>
+</body>
+</html>

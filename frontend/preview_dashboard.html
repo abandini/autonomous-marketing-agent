@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Operator Dashboard Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .dashboard-header {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status-approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .chart-container {
+            height: 250px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>GAMS Operator Dashboard</h1>
+            <p class="text-muted">General Autonomous Marketing System - Operator Interface</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="dashboard-card">
+                    <div class="card-title">Pending Approvals</div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Urgency</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>experiment_20250401123456</td>
+                                    <td>Experiment</td>
+                                    <td>A/B Test: Homepage Hero Section</td>
+                                    <td>Normal</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>budget_20250402091234</td>
+                                    <td>Budget</td>
+                                    <td>Facebook Ad Campaign - $2,500 increase</td>
+                                    <td>High</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>content_20250403151617</td>
+                                    <td>Content</td>
+                                    <td>2,500 word article on marketing optimization</td>
+                                    <td>Normal</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-success">Approve</button>
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-title">Financial Summary</div>
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <div class="metric-value">$42,580</div>
+                            <div class="metric-label">Total Revenue</div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="metric-value">$21,290</div>
+                            <div class="metric-label">Total Expenses</div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="metric-value">$21,290</div>
+                            <div class="metric-label">Profit</div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="metric-value">50%</div>
+                            <div class="metric-label">Profit Margin</div>
+                        </div>
+                    </div>
+                    <div class="chart-container mt-4">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <div class="card-title">Strategy Settings</div>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Monthly Revenue Target</label>
+                            <input type="number" class="form-control" value="50000">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quarterly Revenue Target</label>
+                            <input type="number" class="form-control" value="150000">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Annual Revenue Target</label>
+                            <input type="number" class="form-control" value="600000">
+                        </div>
+                        <button type="button" class="btn btn-primary">Update Targets</button>
+                    </form>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-title">Channel Mix</div>
+                    <div class="mb-3">
+                        <label class="form-label">Organic: 30%</label>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Paid: 40%</label>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email: 15%</label>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" style="width: 15%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Affiliate: 15%</label>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 15%"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary">Edit Mix</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-title">Compliance Issues</div>
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action list-group-item-warning">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Missing unsubscribe link</h6>
+                                <small>GDPR</small>
+                            </div>
+                            <p class="mb-1">Email: New Product Launch</p>
+                        </div>
+                        <div class="list-group-item list-group-item-action list-group-item-warning">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Missing affiliate disclosure</h6>
+                                <small>FTC</small>
+                            </div>
+                            <p class="mb-1">Blog: Best Marketing Tools</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample chart data
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Organic', 'Paid', 'Affiliate', 'Email'],
+                datasets: [{
+                    label: 'Revenue by Channel',
+                    data: [12500, 18750, 7500, 3830],
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.7)',
+                        'rgba(0, 123, 255, 0.7)',
+                        'rgba(255, 193, 7, 0.7)',
+                        'rgba(23, 162, 184, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(23, 162, 184, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Add event listeners for buttons
+        document.querySelectorAll('.btn-success').forEach(button => {
+            button.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const statusCell = row.querySelector('.status-badge');
+                statusCell.textContent = 'Approved';
+                statusCell.classList.remove('status-pending');
+                statusCell.classList.add('status-approved');
+                row.querySelectorAll('button').forEach(btn => btn.disabled = true);
+            });
+        });
+        
+        document.querySelectorAll('.btn-danger').forEach(button => {
+            button.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const statusCell = row.querySelector('.status-badge');
+                statusCell.textContent = 'Rejected';
+                statusCell.classList.remove('status-pending');
+                statusCell.classList.add('status-rejected');
+                row.querySelectorAll('button').forEach(btn => btn.disabled = true);
+            });
+        });
+    </script>
+</body>
+</html>

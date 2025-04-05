@@ -1,0 +1,257 @@
+{
+  "workflows": [
+    {
+      "name": "affiliate_product_selection",
+      "description": "Select affiliate products based on criteria",
+      "phases": ["website_optimization", "content_refinement", "revenue_optimization"],
+      "feedback_loops": ["short", "medium"],
+      "parameters": {
+        "niche": "string",
+        "budget": "number",
+        "platform_preference": "string",
+        "count": "number"
+      }
+    },
+    {
+      "name": "affiliate_link_generation",
+      "description": "Generate affiliate links for products",
+      "phases": ["website_optimization", "multi_channel_marketing"],
+      "feedback_loops": ["short"],
+      "parameters": {
+        "product_ids": "array",
+        "tracking_id": "string",
+        "utm_params": "object"
+      }
+    },
+    {
+      "name": "affiliate_conversion_analysis",
+      "description": "Analyze conversion funnel for affiliate products",
+      "phases": ["data_learning", "content_refinement", "revenue_optimization"],
+      "feedback_loops": ["medium", "long"],
+      "parameters": {
+        "product_id": "string",
+        "start_date": "string",
+        "end_date": "string"
+      }
+    },
+    {
+      "name": "affiliate_revenue_tracking",
+      "description": "Track revenue from affiliate products",
+      "phases": ["data_learning", "revenue_optimization"],
+      "feedback_loops": ["medium", "long"],
+      "parameters": {
+        "product_ids": "array",
+        "start_date": "string",
+        "end_date": "string",
+        "platforms": "array"
+      }
+    },
+    {
+      "name": "affiliate_commission_optimization",
+      "description": "Optimize commission structures for affiliate products",
+      "phases": ["revenue_optimization"],
+      "feedback_loops": ["medium", "long"],
+      "parameters": {
+        "platform": "string",
+        "target_metric": "string",
+        "optimization_strategy": "string"
+      }
+    },
+    {
+      "name": "affiliate_ab_testing",
+      "description": "Create and analyze A/B tests for affiliate marketing",
+      "phases": ["website_optimization", "content_refinement", "revenue_optimization"],
+      "feedback_loops": ["short", "medium"],
+      "parameters": {
+        "action": "string",
+        "test_name": "string",
+        "test_type": "string",
+        "variants": "array",
+        "duration_days": "number",
+        "test_id": "string",
+        "variant_id": "string",
+        "metrics": "object",
+        "confidence_level": "number"
+      }
+    },
+    {
+      "name": "affiliate_continuous_improvement",
+      "description": "Execute the continuous improvement cycle for affiliate marketing",
+      "phases": ["system_expansion"],
+      "feedback_loops": ["long"],
+      "parameters": {
+        "cycle_id": "string",
+        "action": "string",
+        "initial_phase": "string",
+        "loop_type": "string",
+        "strategy_name": "string"
+      }
+    }
+  ],
+  "phase_workflows": {
+    "website_optimization": [
+      {
+        "workflow": "affiliate_product_selection",
+        "priority": 1,
+        "params": {
+          "count": 10
+        }
+      },
+      {
+        "workflow": "affiliate_link_generation",
+        "priority": 2,
+        "params": {}
+      },
+      {
+        "workflow": "affiliate_ab_testing",
+        "priority": 3,
+        "params": {
+          "action": "create",
+          "test_type": "landing_page",
+          "duration_days": 14
+        }
+      }
+    ],
+    "multi_channel_marketing": [
+      {
+        "workflow": "affiliate_link_generation",
+        "priority": 1,
+        "params": {
+          "utm_params": {
+            "source": "multi_channel",
+            "medium": "referral",
+            "campaign": "affiliate_cycle"
+          }
+        }
+      }
+    ],
+    "data_learning": [
+      {
+        "workflow": "affiliate_conversion_analysis",
+        "priority": 1,
+        "params": {}
+      },
+      {
+        "workflow": "affiliate_revenue_tracking",
+        "priority": 2,
+        "params": {}
+      }
+    ],
+    "content_refinement": [
+      {
+        "workflow": "affiliate_product_selection",
+        "priority": 1,
+        "params": {
+          "count": 5
+        }
+      },
+      {
+        "workflow": "affiliate_conversion_analysis",
+        "priority": 2,
+        "params": {}
+      },
+      {
+        "workflow": "affiliate_ab_testing",
+        "priority": 3,
+        "params": {
+          "action": "create",
+          "test_type": "content",
+          "duration_days": 7
+        }
+      }
+    ],
+    "revenue_optimization": [
+      {
+        "workflow": "affiliate_revenue_tracking",
+        "priority": 1,
+        "params": {}
+      },
+      {
+        "workflow": "affiliate_commission_optimization",
+        "priority": 2,
+        "params": {
+          "optimization_strategy": "revenue_focused"
+        }
+      },
+      {
+        "workflow": "affiliate_product_selection",
+        "priority": 3,
+        "params": {
+          "count": 3
+        }
+      }
+    ],
+    "system_expansion": [
+      {
+        "workflow": "affiliate_continuous_improvement",
+        "priority": 1,
+        "params": {
+          "action": "feedback",
+          "loop_type": "long"
+        }
+      }
+    ]
+  },
+  "feedback_loops": {
+    "short": {
+      "description": "Short-term feedback loop for quick optimizations",
+      "interval_days": 1,
+      "workflows": [
+        "affiliate_link_generation",
+        "affiliate_ab_testing"
+      ]
+    },
+    "medium": {
+      "description": "Medium-term feedback loop for performance analysis",
+      "interval_days": 7,
+      "workflows": [
+        "affiliate_conversion_analysis",
+        "affiliate_revenue_tracking",
+        "affiliate_ab_testing"
+      ]
+    },
+    "long": {
+      "description": "Long-term feedback loop for strategic adjustments",
+      "interval_days": 30,
+      "workflows": [
+        "affiliate_revenue_tracking",
+        "affiliate_commission_optimization",
+        "affiliate_continuous_improvement"
+      ]
+    }
+  },
+  "acceleration_strategies": {
+    "high_performers": {
+      "description": "Focus on high-performing products",
+      "workflows": [
+        "affiliate_product_selection",
+        "affiliate_commission_optimization"
+      ],
+      "parameters": {
+        "optimization_strategy": "high_performers",
+        "target_metric": "revenue"
+      }
+    },
+    "conversion_boost": {
+      "description": "Focus on improving conversion rates",
+      "workflows": [
+        "affiliate_conversion_analysis",
+        "affiliate_ab_testing"
+      ],
+      "parameters": {
+        "test_type": "call_to_action",
+        "optimization_strategy": "conversion_focused"
+      }
+    },
+    "platform_expansion": {
+      "description": "Expand to new affiliate platforms",
+      "workflows": [
+        "affiliate_product_selection",
+        "affiliate_link_generation"
+      ],
+      "parameters": {
+        "platform_preference": "new"
+      }
+    }
+  }
+}

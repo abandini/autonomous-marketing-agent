@@ -1,0 +1,25 @@
+{
+  "is_running": true,
+  "last_full_analysis": "2025-04-05T10:57:38.420623",
+  "analysis_frequency_days": 7,
+  "next_scheduled_analysis": "2025-04-12T10:57:38.420623",
+  "component_status": {
+    "competitor_monitor": {
+      "competitors_tracked": 4
+    },
+    "pattern_recognizer": {
+      "active_patterns": 16
+    },
+    "predictive_modeler": {
+      "active_predictions": 16
+    },
+    "trend_analyzer": {
+      "tracked_trends": 5
+    },
+    "knowledge_repository": {
+      "events": 7,
+      "insights": 8
+    }
+  },
+  "export_timestamp": "2025-04-05T10:57:38.428857"
+}

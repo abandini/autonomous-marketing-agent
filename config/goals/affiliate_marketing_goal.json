@@ -1,0 +1,199 @@
+{
+  "name": "affiliate_income_generation",
+  "description": "Continuous improvement cycle for automated affiliate marketing income generation",
+  "phases": [
+    {
+      "name": "website_optimization",
+      "description": "Optimize website structure, conversion pathways, and initial content seeding",
+      "workflows": [
+        "domain_analysis",
+        "website_structure_optimization",
+        "conversion_pathway_setup",
+        "content_seeding",
+        "analytics_configuration"
+      ],
+      "metrics": [
+        "page_load_time",
+        "bounce_rate",
+        "time_on_page",
+        "conversion_rate",
+        "click_through_rate"
+      ],
+      "success_criteria": {
+        "conversion_rate": ">= 2.5%",
+        "bounce_rate": "<= 40%",
+        "page_load_time": "<= 2.0"
+      }
+    },
+    {
+      "name": "multi_channel_marketing",
+      "description": "Distribute content across relevant platforms and optimize audience targeting",
+      "workflows": [
+        "content_distribution",
+        "audience_targeting",
+        "engagement_automation",
+        "ad_campaign_setup",
+        "channel_performance_monitoring"
+      ],
+      "metrics": [
+        "reach",
+        "engagement_rate",
+        "click_through_rate",
+        "cost_per_click",
+        "channel_roi"
+      ],
+      "success_criteria": {
+        "engagement_rate": ">= 3.0%",
+        "click_through_rate": ">= 1.5%",
+        "channel_roi": ">= 150%"
+      }
+    },
+    {
+      "name": "data_learning_analysis",
+      "description": "Analyze user behavior, conversion patterns, and market trends",
+      "workflows": [
+        "behavior_tracking",
+        "conversion_funnel_analysis",
+        "competitor_monitoring",
+        "market_trend_identification",
+        "predictive_modeling"
+      ],
+      "metrics": [
+        "data_completeness",
+        "insight_quality",
+        "prediction_accuracy",
+        "actionable_recommendations"
+      ],
+      "success_criteria": {
+        "data_completeness": ">= 90%",
+        "prediction_accuracy": ">= 75%"
+      }
+    },
+    {
+      "name": "content_offering_refinement",
+      "description": "Optimize product selection and content based on performance data",
+      "workflows": [
+        "product_performance_analysis",
+        "commission_rate_optimization",
+        "content_enhancement",
+        "keyword_gap_analysis",
+        "content_expansion"
+      ],
+      "metrics": [
+        "product_relevance_score",
+        "content_engagement",
+        "keyword_coverage",
+        "content_quality_score"
+      ],
+      "success_criteria": {
+        "product_relevance_score": ">= 8.0",
+        "content_engagement": ">= 4.0",
+        "keyword_coverage": ">= 85%"
+      }
+    },
+    {
+      "name": "revenue_optimization",
+      "description": "Enhance conversions and diversify monetization strategies",
+      "workflows": [
+        "conversion_enhancement",
+        "offer_personalization",
+        "upsell_implementation",
+        "monetization_diversification",
+        "price_point_testing"
+      ],
+      "metrics": [
+        "conversion_rate",
+        "average_order_value",
+        "revenue_per_visitor",
+        "revenue_diversity"
+      ],
+      "success_criteria": {
+        "conversion_rate": ">= 3.5%",
+        "average_order_value": ">= 15%",
+        "revenue_per_visitor": ">= 0.5"
+      }
+    },
+    {
+      "name": "system_expansion",
+      "description": "Scale successful strategies and expand to new markets",
+      "workflows": [
+        "content_expansion",
+        "niche_diversification",
+        "international_adaptation",
+        "mobile_optimization",
+        "emerging_platform_preparation"
+      ],
+      "metrics": [
+        "market_coverage",
+        "scaling_efficiency",
+        "new_market_penetration",
+        "platform_diversity"
+      ],
+      "success_criteria": {
+        "market_coverage": ">= 25%",
+        "scaling_efficiency": ">= 80%",
+        "platform_diversity": ">= 4"
+      }
+    }
+  ],
+  "feedback_loops": {
+    "short_cycle": {
+      "frequency": "daily",
+      "metrics": [
+        "ad_performance",
+        "conversion_rate",
+        "revenue"
+      ]
+    },
+    "medium_cycle": {
+      "frequency": "weekly",
+      "metrics": [
+        "content_performance",
+        "channel_efficiency",
+        "product_performance"
+      ]
+    },
+    "long_cycle": {
+      "frequency": "monthly",
+      "metrics": [
+        "strategy_effectiveness",
+        "market_position",
+        "revenue_growth"
+      ]
+    }
+  },
+  "acceleration_strategies": {
+    "parallel_testing": {
+      "description": "Run multiple variations simultaneously rather than sequentially",
+      "implementation": [
+        "multivariate_testing",
+        "competitive_internal_teams",
+        "parallel_channel_optimization"
+      ]
+    },
+    "compound_optimization": {
+      "description": "Focus on multiplicative improvements across multiple factors",
+      "implementation": [
+        "bottleneck_identification",
+        "progressive_enhancement",
+        "cross_factor_optimization"
+      ]
+    },
+    "data_leverage": {
+      "description": "Extract multiple insights from the same data points",
+      "implementation": [
+        "cross_domain_intelligence",
+        "multi_insight_extraction",
+        "pattern_recognition"
+      ]
+    },
+    "automated_experimentation": {
+      "description": "Systematically explore new approaches with risk-weighted allocation",
+      "implementation": [
+        "exploration_allocation",
+        "success_scaling",
+        "risk_weighted_innovation"
+      ]
+    }
+  }
+}

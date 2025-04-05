@@ -1,0 +1,138 @@
+{
+  "insight_event_75779f0a": {
+    "id": "insight_event_75779f0a",
+    "title": "Product Launch by Acme Corporation",
+    "description": "Acme Corporation announced the release of their new AI-powered marketing assistant, designed to automate campaign optimization and content creation.",
+    "insight_type": "competitor",
+    "priority": 4,
+    "source_type": "event",
+    "source_id": "event_comp_acme_product_launch_2740",
+    "related_competitors": [
+      "comp_acme"
+    ],
+    "created_at": "2025-04-05T10:57:38.419645",
+    "tags": [
+      "product_launch",
+      "high"
+    ]
+  },
+  "insight_event_361370d0": {
+    "id": "insight_event_361370d0",
+    "title": "Price Change by Acme Corporation",
+    "description": "Acme Corporation has increased pricing for their Enterprise tier by 12%, citing increased development costs and expanded feature set.",
+    "insight_type": "competitor",
+    "priority": 3,
+    "source_type": "event",
+    "source_id": "event_comp_acme_price_change_7595",
+    "related_competitors": [
+      "comp_acme"
+    ],
+    "created_at": "2025-04-05T10:57:38.419834",
+    "tags": [
+      "price_change",
+      "medium"
+    ]
+  },
+  "insight_event_6acfb6b8": {
+    "id": "insight_event_6acfb6b8",
+    "title": "Partnership by Globex Marketing",
+    "description": "Globex Marketing announced a strategic partnership with a leading CRM provider to enhance their data integration capabilities.",
+    "insight_type": "competitor",
+    "priority": 3,
+    "source_type": "event",
+    "source_id": "event_comp_globex_partnership_1130",
+    "related_competitors": [
+      "comp_globex"
+    ],
+    "created_at": "2025-04-05T10:57:38.420007",
+    "tags": [
+      "partnership",
+      "medium"
+    ]
+  },
+  "insight_event_b7bfb932": {
+    "id": "insight_event_b7bfb932",
+    "title": "Executive Change by Initech Solutions",
+    "description": "Initech Solutions has appointed a new CTO with a background in AI and machine learning, signaling a potential shift in technology strategy.",
+    "insight_type": "competitor",
+    "priority": 3,
+    "source_type": "event",
+    "source_id": "event_comp_initech_executive_change_2399",
+    "related_competitors": [
+      "comp_initech"
+    ],
+    "created_at": "2025-04-05T10:57:38.420235",
+    "tags": [
+      "executive_change",
+      "medium"
+    ]
+  },
+  "insight_event_691fdee2": {
+    "id": "insight_event_691fdee2",
+    "title": "Funding by Umbrella Marketing Technologies",
+    "description": "Umbrella Marketing Technologies has secured $50 million in Series C funding to accelerate product development and market expansion.",
+    "insight_type": "competitor",
+    "priority": 4,
+    "source_type": "event",
+    "source_id": "event_comp_umbrella_funding_7319",
+    "related_competitors": [
+      "comp_umbrella"
+    ],
+    "created_at": "2025-04-05T10:57:38.420381",
+    "tags": [
+      "funding",
+      "high"
+    ]
+  },
+  "insight_event_5976146c": {
+    "id": "insight_event_5976146c",
+    "title": "Product Launch by Umbrella Marketing Technologies",
+    "description": "Umbrella has launched a new predictive content optimization tool that uses machine learning to improve content performance.",
+    "insight_type": "competitor",
+    "priority": 3,
+    "source_type": "event",
+    "source_id": "event_comp_umbrella_product_launch_9980",
+    "related_competitors": [
+      "comp_umbrella"
+    ],
+    "created_at": "2025-04-05T10:57:38.420525",
+    "tags": [
+      "product_launch",
+      "medium"
+    ]
+  },
+  "insight_gap_f583cec0": {
+    "id": "insight_gap_f583cec0",
+    "title": "Competitive Gap: Umbrella Marketing Technologies in Subscription Economy Growth",
+    "description": "Umbrella Marketing Technologies is lagging in adoption of Subscription Economy Growth with a position of 0.10 compared to average 0.42 and leader position of 0.80.",
+    "insight_type": "competitive_gap",
+    "priority": 1,
+    "source_type": "analysis",
+    "source_id": "trend_customer_behavior_subscription_economy_growth",
+    "related_competitors": [
+      "comp_umbrella"
+    ],
+    "created_at": "2025-04-05T10:57:38.422347",
+    "tags": [
+      "gap",
+      "opportunity"
+    ]
+  },
+  "insight_gap_ca56e2bf": {
+    "id": "insight_gap_ca56e2bf",
+    "title": "Competitive Gap: Globex Marketing in Subscription Economy Growth",
+    "description": "Globex Marketing is lagging in adoption of Subscription Economy Growth with a position of 0.30 compared to average 0.42 and leader position of 0.80.",
+    "insight_type": "competitive_gap",
+    "priority": 1,
+    "source_type": "analysis",
+    "source_id": "trend_customer_behavior_subscription_economy_growth",
+    "related_competitors": [
+      "comp_globex"
+    ],
+    "created_at": "2025-04-05T10:57:38.422402",
+    "tags": [
+      "gap",
+      "opportunity"
+    ]
+  }
+}

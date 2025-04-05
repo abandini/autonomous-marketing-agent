@@ -1,0 +1,12 @@
+{
+  "ga4": {
+    "enabled": true,
+    "property_id": "YOUR_GA4_PROPERTY_ID",
+    "credentials_file": "path/to/your/ga4-credentials.json"
+  },
+  "universal_analytics": {
+    "enabled": false,
+    "view_id": "YOUR_UA_VIEW_ID",
+    "credentials_file": "path/to/your/ua-credentials.json"
+  }
+}

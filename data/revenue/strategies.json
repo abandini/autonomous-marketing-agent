@@ -1,0 +1,1293 @@
+{
+  "strategy_8eb8ee0f": {
+    "id": "strategy_8eb8ee0f",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Targeted email campaign to upsell existing customers",
+    "target_channels": [
+      "Email Marketing"
+    ],
+    "target_segments": [
+      "Returning Customers"
+    ],
+    "revenue_model": null,
+    "metrics": {},
+    "actions": [],
+    "status": "draft",
+    "created_at": "2025-04-04T12:12:59.877710",
+    "updated_at": "2025-04-04T12:12:59.878072",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    },
+    "goals": [
+      "89db96b4-34f3-40f0-ae97-98140a5a9a00"
+    ]
+  },
+  "strategy_70a7f0a6": {
+    "id": "strategy_70a7f0a6",
+    "name": "Social Media Acquisition",
+    "strategy_type": "acquisition",
+    "description": "Social media campaign to acquire new customers",
+    "target_channels": [
+      "Social Media"
+    ],
+    "target_segments": [
+      "New Customers"
+    ],
+    "revenue_model": null,
+    "metrics": {},
+    "actions": [],
+    "status": "draft",
+    "created_at": "2025-04-04T12:12:59.878588",
+    "updated_at": "2025-04-04T12:12:59.878972",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    },
+    "goals": [
+      "590f171b-53df-42ca-b17d-09a748a2d097"
+    ]
+  },
+  "strategy_8a7efc68": {
+    "id": "strategy_8a7efc68",
+    "name": "Affiliate Commission Optimization",
+    "strategy_type": "pricing",
+    "description": "Optimize affiliate commission structure for better ROI",
+    "target_channels": [
+      "Affiliate Marketing"
+    ],
+    "target_segments": [],
+    "revenue_model": null,
+    "metrics": {},
+    "actions": [],
+    "status": "draft",
+    "created_at": "2025-04-04T12:12:59.879488",
+    "updated_at": "2025-04-04T12:12:59.879491",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_811e9332": {
+    "id": "strategy_811e9332",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:23.062267",
+    "updated_at": "2025-04-04T15:58:23.062274",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_5c4094c2": {
+    "id": "strategy_5c4094c2",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:23.063905",
+    "updated_at": "2025-04-04T15:58:23.063908",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_9a0243b9": {
+    "id": "strategy_9a0243b9",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:23.064717",
+    "updated_at": "2025-04-04T15:58:23.064720",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_d663a516": {
+    "id": "strategy_d663a516",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:52.834687",
+    "updated_at": "2025-04-04T15:58:52.837360",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_06bb1831": {
+    "id": "strategy_06bb1831",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:52.835609",
+    "updated_at": "2025-04-04T15:58:52.838112",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_fe5dbf23": {
+    "id": "strategy_fe5dbf23",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T15:58:52.836478",
+    "updated_at": "2025-04-04T15:58:52.838842",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_5eb2942e": {
+    "id": "strategy_5eb2942e",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:01:55.299995",
+    "updated_at": "2025-04-04T16:01:55.303012",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_7761fd6c": {
+    "id": "strategy_7761fd6c",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:01:55.301027",
+    "updated_at": "2025-04-04T16:01:55.303925",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_42fc9379": {
+    "id": "strategy_42fc9379",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:01:55.302004",
+    "updated_at": "2025-04-04T16:01:55.304825",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_5abea218": {
+    "id": "strategy_5abea218",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:03:15.738279",
+    "updated_at": "2025-04-04T16:03:15.741447",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_e130ea7a": {
+    "id": "strategy_e130ea7a",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:03:15.739378",
+    "updated_at": "2025-04-04T16:03:15.742821",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_1f7626b1": {
+    "id": "strategy_1f7626b1",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:03:15.740497",
+    "updated_at": "2025-04-04T16:03:15.744340",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_eac768c4": {
+    "id": "strategy_eac768c4",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:53:45.589814",
+    "updated_at": "2025-04-04T16:53:45.594698",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_9d51677c": {
+    "id": "strategy_9d51677c",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:53:45.591807",
+    "updated_at": "2025-04-04T16:53:45.596064",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_402ab87c": {
+    "id": "strategy_402ab87c",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T16:53:45.593206",
+    "updated_at": "2025-04-04T16:53:45.598919",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_765cddf2": {
+    "id": "strategy_765cddf2",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:06:43.997391",
+    "updated_at": "2025-04-04T17:06:44.002030",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_a5d134f2": {
+    "id": "strategy_a5d134f2",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:06:43.998975",
+    "updated_at": "2025-04-04T17:06:44.003821",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_cdd10a6a": {
+    "id": "strategy_cdd10a6a",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:06:44.000490",
+    "updated_at": "2025-04-04T17:06:44.005273",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_60a11f5f": {
+    "id": "strategy_60a11f5f",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:07:12.236424",
+    "updated_at": "2025-04-04T17:07:12.241781",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_5a244ad0": {
+    "id": "strategy_5a244ad0",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:07:12.238365",
+    "updated_at": "2025-04-04T17:07:12.243291",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_82f6c1a0": {
+    "id": "strategy_82f6c1a0",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:07:12.240135",
+    "updated_at": "2025-04-04T17:07:12.244788",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_a043fcbf": {
+    "id": "strategy_a043fcbf",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:10:46.971651",
+    "updated_at": "2025-04-04T17:10:46.977797",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_6f3f12c1": {
+    "id": "strategy_6f3f12c1",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:10:46.974164",
+    "updated_at": "2025-04-04T17:10:46.979541",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_c19b698d": {
+    "id": "strategy_c19b698d",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:10:46.975974",
+    "updated_at": "2025-04-04T17:10:46.981324",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_b362166e": {
+    "id": "strategy_b362166e",
+    "name": "Social Media Acquisition Campaign",
+    "strategy_type": "acquisition",
+    "description": "Strategy to acquire new customers through social media advertising",
+    "target_channels": [
+      "social_media",
+      "display"
+    ],
+    "target_segments": [
+      "new_customers",
+      "young_professionals"
+    ],
+    "revenue_model": "cpa",
+    "metrics": {
+      "budget": 5000,
+      "duration_days": 30,
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Create ad creatives",
+        "description": "Design ad creatives for social media platforms",
+        "type": "creative"
+      },
+      {
+        "name": "Set up targeting",
+        "description": "Configure audience targeting for each platform",
+        "type": "targeting"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:14:51.653541",
+    "updated_at": "2025-04-04T17:14:51.659481",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_650227fe": {
+    "id": "strategy_650227fe",
+    "name": "Email Upsell Campaign",
+    "strategy_type": "monetization",
+    "description": "Strategy to increase revenue from existing customers through email marketing",
+    "target_channels": [
+      "email"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "high_value"
+    ],
+    "revenue_model": "upsell",
+    "metrics": {
+      "budget": 2000,
+      "duration_days": 45,
+      "email_frequency": "weekly"
+    },
+    "actions": [
+      {
+        "name": "Segment email list",
+        "description": "Segment email list based on purchase history",
+        "type": "segmentation"
+      },
+      {
+        "name": "Create email templates",
+        "description": "Design email templates for upsell campaign",
+        "type": "creative"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:14:51.655443",
+    "updated_at": "2025-04-04T17:14:51.660983",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  },
+  "strategy_b8a33f1c": {
+    "id": "strategy_b8a33f1c",
+    "name": "Customer Loyalty Program",
+    "strategy_type": "retention",
+    "description": "Strategy to improve customer retention through a loyalty program",
+    "target_channels": [
+      "email",
+      "mobile_app"
+    ],
+    "target_segments": [
+      "existing_customers",
+      "at_risk"
+    ],
+    "revenue_model": "loyalty",
+    "metrics": {
+      "budget": 3000,
+      "duration_days": 90,
+      "rewards": [
+        "discounts",
+        "exclusive_content",
+        "early_access"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Design loyalty program",
+        "description": "Design loyalty program structure and rewards",
+        "type": "program_design"
+      },
+      {
+        "name": "Implement tracking",
+        "description": "Implement tracking system for loyalty points",
+        "type": "technical"
+      },
+      {
+        "name": "Create communication plan",
+        "description": "Create communication plan for loyalty program",
+        "type": "communication"
+      }
+    ],
+    "status": "draft",
+    "created_at": "2025-04-04T17:14:51.657215",
+    "updated_at": "2025-04-04T17:14:51.662487",
+    "performance": {
+      "roi": null,
+      "revenue_impact": null,
+      "cost": null,
+      "implementation_progress": 0.0
+    }
+  }
+}

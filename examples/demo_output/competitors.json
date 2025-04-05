@@ -1,0 +1,66 @@
+{
+  "comp_acme": {
+    "id": "comp_acme",
+    "name": "Acme Corporation",
+    "website": "https://www.acmecorp.example",
+    "industry": "Marketing Technology",
+    "main_products": [
+      "Acme Marketing Cloud",
+      "Acme Analytics Suite",
+      "Acme Campaign Manager"
+    ],
+    "target_markets": [
+      "Enterprise",
+      "Mid-Market"
+    ],
+    "last_updated": "2025-04-05T10:57:38.418051"
+  },
+  "comp_globex": {
+    "id": "comp_globex",
+    "name": "Globex Marketing",
+    "website": "https://www.globexmarketing.example",
+    "industry": "Marketing Automation",
+    "main_products": [
+      "Globex Automation Platform",
+      "Globex Customer Insights",
+      "Globex Journey Mapper"
+    ],
+    "target_markets": [
+      "Mid-Market",
+      "SMB"
+    ],
+    "last_updated": "2025-04-05T10:57:38.418058"
+  },
+  "comp_initech": {
+    "id": "comp_initech",
+    "name": "Initech Solutions",
+    "website": "https://www.initech.example",
+    "industry": "Traditional Marketing Services",
+    "main_products": [
+      "Initech Marketing Suite",
+      "Initech Campaign Builder",
+      "Initech Analytics"
+    ],
+    "target_markets": [
+      "Enterprise"
+    ],
+    "last_updated": "2025-04-05T10:57:38.418062"
+  },
+  "comp_umbrella": {
+    "id": "comp_umbrella",
+    "name": "Umbrella Marketing Technologies",
+    "website": "https://www.umbrella-tech.example",
+    "industry": "AI Marketing",
+    "main_products": [
+      "Umbrella AI Platform",
+      "Umbrella Predictive Analytics",
+      "Umbrella Content Generator"
+    ],
+    "target_markets": [
+      "Enterprise",
+      "Mid-Market",
+      "SMB"
+    ],
+    "last_updated": "2025-04-05T10:57:38.418064"
+  }
+}

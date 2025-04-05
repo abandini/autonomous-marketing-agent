@@ -1,0 +1,28 @@
+[
+  {
+    "id": "alert_377dcee4",
+    "type": "conversion_decline",
+    "severity": "warning",
+    "message": "Declining trend detected in conversion_rate",
+    "metrics": {
+      "conversion_rate": 0.028
+    },
+    "entity_id": null,
+    "entity_type": "metric",
+    "timestamp": "2025-04-04T12:12:59.882616",
+    "status": "active"
+  },
+  {
+    "id": "alert_edc12f95",
+    "type": "conversion_decline",
+    "severity": "warning",
+    "message": "Declining trend detected in conversion_rate",
+    "metrics": {
+      "conversion_rate": 0.019
+    },
+    "entity_id": null,
+    "entity_type": "metric",
+    "timestamp": "2025-04-04T12:12:59.883840",
+    "status": "active"
+  }
+]

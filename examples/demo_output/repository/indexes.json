@@ -1,0 +1,51 @@
+{
+  "competitor_events": {
+    "comp_acme": [
+      "event_comp_acme_product_launch_2740",
+      "event_comp_acme_price_change_7595"
+    ],
+    "comp_globex": [
+      "event_comp_globex_partnership_1130",
+      "event_comp_globex_marketing_campaign_7591"
+    ],
+    "comp_initech": [
+      "event_comp_initech_executive_change_2399"
+    ],
+    "comp_umbrella": [
+      "event_comp_umbrella_funding_7319",
+      "event_comp_umbrella_product_launch_9980"
+    ]
+  },
+  "competitor_insights": {
+    "comp_acme": [
+      "insight_event_75779f0a",
+      "insight_event_361370d0"
+    ],
+    "comp_globex": [
+      "insight_event_6acfb6b8",
+      "insight_gap_ca56e2bf"
+    ],
+    "comp_initech": [
+      "insight_event_b7bfb932"
+    ],
+    "comp_umbrella": [
+      "insight_event_691fdee2",
+      "insight_event_5976146c",
+      "insight_gap_f583cec0"
+    ]
+  },
+  "category_insights": {
+    "competitor": [
+      "insight_event_75779f0a",
+      "insight_event_361370d0",
+      "insight_event_6acfb6b8",
+      "insight_event_b7bfb932",
+      "insight_event_691fdee2",
+      "insight_event_5976146c"
+    ],
+    "competitive_gap": [
+      "insight_gap_f583cec0",
+      "insight_gap_ca56e2bf"
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "04655626-557e-4166-829f-a5e303cf92dc": {
+    "id": "04655626-557e-4166-829f-a5e303cf92dc",
+    "name": "Q3 Email Revenue Target",
+    "description": "Revenue goal for Q3 Email Revenue Target",
+    "target_value": 50000.0,
+    "current_value": 0.0,
+    "period": "quarterly",
+    "channel": "Email Marketing",
+    "source": null,
+    "parent_goal_id": null,
+    "status": "pending",
+    "creation_date": "2025-04-04T12:12:05.448590",
+    "last_updated": "2025-04-04T12:12:05.448592",
+    "start_date": "2025-04-04T12:12:05.448542",
+    "end_date": "2025-07-03T12:12:05.448543",
+    "metrics": {
+      "progress_percentage": 0.0,
+      "time_elapsed_percentage": 7.201646090534053e-10,
+      "velocity": 0.0,
+      "projected_completion": null,
+      "variance_from_target": -3.6008230452670263e-07
+    },
+    "milestones": [],
+    "history": []
+  },
+  "89db96b4-34f3-40f0-ae97-98140a5a9a00": {
+    "id": "89db96b4-34f3-40f0-ae97-98140a5a9a00",
+    "name": "Q3 Email Revenue Target",
+    "description": "Revenue goal for Q3 Email Revenue Target",
+    "target_value": 50000.0,
+    "current_value": 0.0,
+    "period": "quarterly",
+    "channel": "Email Marketing",
+    "source": null,
+    "parent_goal_id": null,
+    "status": "pending",
+    "creation_date": "2025-04-04T12:12:59.875442",
+    "last_updated": "2025-04-04T12:12:59.875443",
+    "start_date": "2025-04-04T12:12:59.875408",
+    "end_date": "2025-07-03T12:12:59.875409",
+    "metrics": {
+      "progress_percentage": 0.0,
+      "time_elapsed_percentage": 5.144032921810038e-10,
+      "velocity": 0.0,
+      "projected_completion": null,
+      "variance_from_target": -2.572016460905019e-07
+    },
+    "milestones": [],
+    "history": []
+  },
+  "41db7546-8f18-4e06-bac4-d6a97f58ac9d": {
+    "id": "41db7546-8f18-4e06-bac4-d6a97f58ac9d",
+    "name": "Monthly Social Media Revenue",
+    "description": "Revenue goal for Monthly Social Media Revenue",
+    "target_value": 15000.0,
+    "current_value": 0.0,
+    "period": "monthly",
+    "channel": "Social Media",
+    "source": null,
+    "parent_goal_id": null,
+    "status": "pending",
+    "creation_date": "2025-04-04T12:12:59.876163",
+    "last_updated": "2025-04-04T12:12:59.876164",
+    "start_date": "2025-04-04T12:12:59.875414",
+    "end_date": "2025-05-04T12:12:59.875415",
+    "metrics": {
+      "progress_percentage": 0.0,
+      "time_elapsed_percentage": 2.9128086419741852e-08,
+      "velocity": 0.0,
+      "projected_completion": null,
+      "variance_from_target": -4.369212962961278e-06
+    },
+    "milestones": [],
+    "history": []
+  },
+  "590f171b-53df-42ca-b17d-09a748a2d097": {
+    "id": "590f171b-53df-42ca-b17d-09a748a2d097",
+    "name": "New Customer Acquisition Revenue",
+    "description": "Revenue goal for New Customer Acquisition Revenue",
+    "target_value": 25000.0,
+    "current_value": 0.0,
+    "period": "quarterly",
+    "channel": null,
+    "source": null,
+    "parent_goal_id": null,
+    "status": "pending",
+    "creation_date": "2025-04-04T12:12:59.876833",
+    "last_updated": "2025-04-04T12:12:59.876834",
+    "start_date": "2025-04-04T12:12:59.875417",
+    "end_date": "2025-07-03T12:12:59.875417",
+    "metrics": {
+      "progress_percentage": 0.0,
+      "time_elapsed_percentage": 1.8287037037037037e-08,
+      "velocity": 0.0,
+      "projected_completion": null,
+      "variance_from_target": -4.5717592592592595e-06
+    },
+    "milestones": [],
+    "history": []
+  }
+}

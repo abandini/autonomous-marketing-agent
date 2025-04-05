@@ -1,0 +1,142 @@
+{
+  "event_comp_acme_product_launch_2740": {
+    "event_id": "event_comp_acme_product_launch_2740",
+    "competitor_id": "comp_acme",
+    "event_type": "product_launch",
+    "title": "Acme Launches AI-Powered Marketing Assistant",
+    "description": "Acme Corporation announced the release of their new AI-powered marketing assistant, designed to automate campaign optimization and content creation.",
+    "date": "2025-02-19T10:57:38.419489",
+    "impact_level": "high",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "product_launch",
+      "comp_acme"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.419518"
+  },
+  "event_comp_acme_price_change_7595": {
+    "event_id": "event_comp_acme_price_change_7595",
+    "competitor_id": "comp_acme",
+    "event_type": "price_change",
+    "title": "Acme Increases Enterprise Pricing by 12%",
+    "description": "Acme Corporation has increased pricing for their Enterprise tier by 12%, citing increased development costs and expanded feature set.",
+    "date": "2025-01-05T10:57:38.419494",
+    "impact_level": "medium",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "price_change",
+      "comp_acme"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.419687"
+  },
+  "event_comp_globex_partnership_1130": {
+    "event_id": "event_comp_globex_partnership_1130",
+    "competitor_id": "comp_globex",
+    "event_type": "partnership",
+    "title": "Globex Partners with Major CRM Provider",
+    "description": "Globex Marketing announced a strategic partnership with a leading CRM provider to enhance their data integration capabilities.",
+    "date": "2025-03-06T10:57:38.419495",
+    "impact_level": "medium",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "partnership",
+      "comp_globex"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.419890"
+  },
+  "event_comp_globex_marketing_campaign_7591": {
+    "event_id": "event_comp_globex_marketing_campaign_7591",
+    "competitor_id": "comp_globex",
+    "event_type": "marketing_campaign",
+    "title": "Globex Launches 'Future of Marketing' Campaign",
+    "description": "Globex Marketing initiated a major marketing campaign focused on their vision for the future of marketing automation.",
+    "date": "2025-03-21T10:57:38.419497",
+    "impact_level": "low",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "marketing_campaign",
+      "comp_globex"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.420045"
+  },
+  "event_comp_initech_executive_change_2399": {
+    "event_id": "event_comp_initech_executive_change_2399",
+    "competitor_id": "comp_initech",
+    "event_type": "executive_change",
+    "title": "Initech Appoints New Chief Technology Officer",
+    "description": "Initech Solutions has appointed a new CTO with a background in AI and machine learning, signaling a potential shift in technology strategy.",
+    "date": "2025-02-04T10:57:38.419499",
+    "impact_level": "medium",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "executive_change",
+      "comp_initech"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.420124"
+  },
+  "event_comp_umbrella_funding_7319": {
+    "event_id": "event_comp_umbrella_funding_7319",
+    "competitor_id": "comp_umbrella",
+    "event_type": "funding",
+    "title": "Umbrella Secures $50M Series C Funding",
+    "description": "Umbrella Marketing Technologies has secured $50 million in Series C funding to accelerate product development and market expansion.",
+    "date": "2025-03-16T10:57:38.419500",
+    "impact_level": "high",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "funding",
+      "comp_umbrella"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.420275"
+  },
+  "event_comp_umbrella_product_launch_9980": {
+    "event_id": "event_comp_umbrella_product_launch_9980",
+    "competitor_id": "comp_umbrella",
+    "event_type": "product_launch",
+    "title": "Umbrella Releases Predictive Content Optimization Tool",
+    "description": "Umbrella has launched a new predictive content optimization tool that uses machine learning to improve content performance.",
+    "date": "2025-03-26T10:57:38.419502",
+    "impact_level": "medium",
+    "sources": [
+      "news",
+      "company_website"
+    ],
+    "tags": [
+      "product_launch",
+      "comp_umbrella"
+    ],
+    "related_events": [],
+    "metadata": {},
+    "created_at": "2025-04-05T10:57:38.420419"
+  }
+}

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Intelligence Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            border: none;
+        }
+        .card-header {
+            background-color: #4a6fdc;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0 !important;
+        }
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+            color: #4a6fdc;
+        }
+        .priority-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .priority-medium {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+        .priority-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .badge {
+            margin-right: 5px;
+        }
+        .chart-container {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-4 text-center">GAMS Competitive Intelligence Dashboard</h1>
+                <p class="lead text-center text-muted">Real-time competitor tracking and strategic recommendations</p>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="competitors-tab" data-bs-toggle="tab" data-bs-target="#competitors" type="button" role="tab" aria-controls="competitors" aria-selected="false">Competitors</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="insights-tab" data-bs-toggle="tab" data-bs-target="#insights" type="button" role="tab" aria-controls="insights" aria-selected="false">Insights</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="opportunities-tab" data-bs-toggle="tab" data-bs-target="#opportunities" type="button" role="tab" aria-controls="opportunities" aria-selected="false">Opportunities</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events" type="button" role="tab" aria-controls="events" aria-selected="false">Events</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                Key Insights
+                            </div>
+                            <div class="card-body">
+                                <div id="key-insights">
+                                    <!-- Key insights will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                Strategic Recommendations
+                            </div>
+                            <div class="card-body">
+                                <div id="strategic-recommendations">
+                                    <!-- Strategic recommendations will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Competitor Summary
+                            </div>
+                            <div class="card-body">
+                                <div id="competitor-summary">
+                                    <!-- Competitor summary will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                Upcoming Predicted Actions
+                            </div>
+                            <div class="card-body">
+                                <div id="predicted-actions">
+                                    <!-- Predicted actions will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Competitors Tab -->
+            <div class="tab-pane fade" id="competitors" role="tabpanel" aria-labelledby="competitors-tab">
+                <div class="row" id="competitor-cards">
+                    <!-- Competitor cards will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Insights Tab -->
+            <div class="tab-pane fade" id="insights" role="tabpanel" aria-labelledby="insights-tab">
+                <div class="card">
+                    <div class="card-header">
+                        All Insights
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="insights-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                        <th>Priority</th>
+                                        <th>Related Competitors</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Insights will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Opportunities Tab -->
+            <div class="tab-pane fade" id="opportunities" role="tabpanel" aria-labelledby="opportunities-tab">
+                <div class="row" id="opportunity-cards">
+                    <!-- Opportunity cards will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Events Tab -->
+            <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                <div class="card">
+                    <div class="card-header">
+                        Competitive Events Timeline
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="events-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Competitor</th>
+                                        <th>Event Type</th>
+                                        <th>Description</th>
+                                        <th>Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Events will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Load data from JSON files
+        async function loadData() {
+            try {
+                // Load competitors
+                const competitorsResponse = await fetch('competitors.json');
+                const competitors = await competitorsResponse.json();
+                
+                // Load repository data
+                let insights = [];
+                let events = [];
+                
+                try {
+                    const insightsResponse = await fetch('repository/insights.json');
+                    insights = await insightsResponse.json();
+                } catch (e) {
+                    console.log('No insights data available');
+                }
+                
+                try {
+                    const eventsResponse = await fetch('repository/events.json');
+                    events = await eventsResponse.json();
+                } catch (e) {
+                    console.log('No events data available');
+                }
+                
+                // Populate competitor summary
+                populateCompetitorSummary(competitors);
+                
+                // Populate competitor cards
+                populateCompetitorCards(competitors);
+                
+                // Populate insights
+                populateInsights(insights);
+                
+                // Populate events
+                populateEvents(events);
+                
+                // Populate opportunities (mock data for demo)
+                populateOpportunities();
+                
+                // Populate key insights (mock data for demo)
+                populateKeyInsights();
+                
+                // Populate strategic recommendations (mock data for demo)
+                populateStrategicRecommendations();
+                
+                // Populate predicted actions (mock data for demo)
+                populatePredictedActions();
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+        
+        function populateCompetitorSummary(competitors) {
+            const summaryContainer = document.getElementById('competitor-summary');
+            
+            if (!competitors || Object.keys(competitors).length === 0) {
+                summaryContainer.innerHTML = '<p>No competitor data available</p>';
+                return;
+            }
+            
+            let html = '<ul class="list-group">';
+            
+            Object.values(competitors).forEach(competitor => {
+                html += `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${competitor.name}
+                        <span class="badge bg-primary rounded-pill">${competitor.industry || 'Unknown'}</span>
+                    </li>
+                `;
+            });
+            
+            html += '</ul>';
+            summaryContainer.innerHTML = html;
+        }
+        
+        function populateCompetitorCards(competitors) {
+            const cardsContainer = document.getElementById('competitor-cards');
+            
+            if (!competitors || Object.keys(competitors).length === 0) {
+                cardsContainer.innerHTML = '<div class="col-12"><p>No competitor data available</p></div>';
+                return;
+            }
+            
+            let html = '';
+            
+            Object.values(competitors).forEach(competitor => {
+                html += `
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                ${competitor.name}
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Industry:</strong> ${competitor.industry || 'Unknown'}</p>
+                                <p><strong>Website:</strong> <a href="${competitor.website}" target="_blank">${competitor.website}</a></p>
+                                <p><strong>Main Products:</strong></p>
+                                <ul>
+                                    ${competitor.main_products ? competitor.main_products.map(product => `<li>${product}</li>`).join('') : '<li>No products listed</li>'}
+                                </ul>
+                                <p><strong>Target Markets:</strong></p>
+                                <ul>
+                                    ${competitor.target_markets ? competitor.target_markets.map(market => `<li>${market}</li>`).join('') : '<li>No target markets listed</li>'}
+                                </ul>
+                                <p><strong>Last Updated:</strong> ${new Date(competitor.last_updated).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cardsContainer.innerHTML = html;
+        }
+        
+        function populateInsights(insights) {
+            const tableBody = document.querySelector('#insights-table tbody');
+            
+            if (!insights || Object.keys(insights).length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6">No insights available</td></tr>';
+                return;
+            }
+            
+            let html = '';
+            
+            Object.values(insights).forEach(insight => {
+                const priorityClass = insight.priority >= 4 ? 'priority-high' : 
+                                     insight.priority >= 2 ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <tr>
+                        <td>${insight.title}</td>
+                        <td>${insight.description}</td>
+                        <td>${insight.insight_type || 'Unknown'}</td>
+                        <td class="${priorityClass}">${insight.priority}</td>
+                        <td>${insight.related_competitors ? insight.related_competitors.join(', ') : 'None'}</td>
+                        <td>${new Date(insight.created_at).toLocaleDateString()}</td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = html;
+        }
+        
+        function populateEvents(events) {
+            const tableBody = document.querySelector('#events-table tbody');
+            
+            if (!events || Object.keys(events).length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5">No events available</td></tr>';
+                return;
+            }
+            
+            let html = '';
+            
+            Object.values(events).forEach(event => {
+                const impactClass = event.impact_score >= 0.7 ? 'priority-high' : 
+                                   event.impact_score >= 0.4 ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <tr>
+                        <td>${new Date(event.event_date).toLocaleDateString()}</td>
+                        <td>${event.competitor_name || 'Unknown'}</td>
+                        <td>${event.event_type || 'Unknown'}</td>
+                        <td>${event.description}</td>
+                        <td class="${impactClass}">${event.impact_score ? event.impact_score.toFixed(2) : 'N/A'}</td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = html;
+        }
+        
+        function populateOpportunities() {
+            const opportunitiesContainer = document.getElementById('opportunity-cards');
+            
+            // Mock data for demo
+            const opportunities = [
+                {
+                    title: "AI-Powered Predictive Analytics",
+                    description: "Be first to market with advanced predictive analytics using latest AI techniques",
+                    urgency: "medium",
+                    actions: ["Evaluate AI analytics vendors", "Conduct proof of concept", "Integrate with existing platform"]
+                },
+                {
+                    title: "Voice-Activated Interface",
+                    description: "Develop voice-activated features ahead of market adoption curve",
+                    urgency: "medium",
+                    actions: ["Research voice recognition APIs", "Identify key use cases", "Prototype voice commands"]
+                },
+                {
+                    title: "Blockchain-Based Security Solution",
+                    description: "Implement blockchain technology for enhanced security before competitors",
+                    urgency: "medium",
+                    actions: ["Assess blockchain platforms", "Identify security use cases", "Develop POC"]
+                }
+            ];
+            
+            let html = '';
+            
+            opportunities.forEach(opportunity => {
+                const urgencyClass = opportunity.urgency === 'high' ? 'priority-high' : 
+                                    opportunity.urgency === 'medium' ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                ${opportunity.title}
+                            </div>
+                            <div class="card-body">
+                                <p>${opportunity.description}</p>
+                                <p><strong>Urgency: </strong><span class="${urgencyClass}">${opportunity.urgency}</span></p>
+                                <p><strong>Recommended Actions:</strong></p>
+                                <ul>
+                                    ${opportunity.actions.map(action => `<li>${action}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            opportunitiesContainer.innerHTML = html;
+        }
+        
+        function populateKeyInsights() {
+            const insightsContainer = document.getElementById('key-insights');
+            
+            // Mock data for demo
+            const keyInsights = [
+                {
+                    title: "Product Launch by Acme Corporation",
+                    description: "Acme Corporation has launched a new AI-powered marketing automation tool targeting enterprise customers.",
+                    priority: 4,
+                    competitor: "Acme Corporation"
+                },
+                {
+                    title: "Price Change by Acme Corporation",
+                    description: "Acme Corporation has reduced prices by 15% for their premium tier, potentially to gain market share.",
+                    priority: 3,
+                    competitor: "Acme Corporation"
+                },
+                {
+                    title: "Competitive Gap: Acme Corporation in Micro-Moment Marketing",
+                    description: "Analysis shows Acme Corporation has not addressed micro-moment marketing, presenting an opportunity.",
+                    priority: 1,
+                    competitor: "Acme Corporation"
+                }
+            ];
+            
+            let html = '';
+            
+            keyInsights.forEach(insight => {
+                const priorityClass = insight.priority >= 4 ? 'priority-high' : 
+                                     insight.priority >= 2 ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <div class="mb-4">
+                        <h5>${insight.title}</h5>
+                        <p>${insight.description}</p>
+                        <div>
+                            <span class="badge bg-secondary">${insight.competitor}</span>
+                            <span class="badge ${priorityClass === 'priority-high' ? 'bg-danger' : 
+                                              priorityClass === 'priority-medium' ? 'bg-warning' : 'bg-success'}">
+                                Priority: ${insight.priority}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            insightsContainer.innerHTML = html;
+        }
+        
+        function populateStrategicRecommendations() {
+            const recommendationsContainer = document.getElementById('strategic-recommendations');
+            
+            // Mock data for demo
+            const recommendations = [
+                {
+                    title: "Launch Voice-Activated Interface",
+                    description: "Develop and launch voice-activated features ahead of market adoption curve to gain competitive advantage.",
+                    urgency: "medium",
+                    impact: "high"
+                },
+                {
+                    title: "Implement AI-Powered Analytics",
+                    description: "Be first to market with advanced predictive analytics using latest AI techniques to differentiate from competitors.",
+                    urgency: "medium",
+                    impact: "high"
+                },
+                {
+                    title: "Enhance Security with Blockchain",
+                    description: "Implement blockchain technology for enhanced security before competitors to address growing customer concerns.",
+                    urgency: "medium",
+                    impact: "medium"
+                }
+            ];
+            
+            let html = '';
+            
+            recommendations.forEach(recommendation => {
+                const urgencyClass = recommendation.urgency === 'high' ? 'priority-high' : 
+                                    recommendation.urgency === 'medium' ? 'priority-medium' : 'priority-low';
+                
+                const impactClass = recommendation.impact === 'high' ? 'priority-high' : 
+                                   recommendation.impact === 'medium' ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <div class="mb-4">
+                        <h5>${recommendation.title}</h5>
+                        <p>${recommendation.description}</p>
+                        <div>
+                            <span class="badge bg-secondary">Urgency: <span class="${urgencyClass}">${recommendation.urgency}</span></span>
+                            <span class="badge bg-secondary">Impact: <span class="${impactClass}">${recommendation.impact}</span></span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            recommendationsContainer.innerHTML = html;
+        }
+        
+        function populatePredictedActions() {
+            const actionsContainer = document.getElementById('predicted-actions');
+            
+            // Mock data for demo
+            const predictedActions = [
+                {
+                    description: "Minor product/feature release from Acme Corporation",
+                    probability: 0.59,
+                    timeframe: "Next 30 days"
+                },
+                {
+                    description: "Marketing campaign launch by Globex Marketing",
+                    probability: 0.48,
+                    timeframe: "Next 60 days"
+                },
+                {
+                    description: "Price adjustment by Initech Solutions",
+                    probability: 0.35,
+                    timeframe: "Next 90 days"
+                }
+            ];
+            
+            let html = '<ul class="list-group">';
+            
+            predictedActions.forEach(action => {
+                const probabilityClass = action.probability >= 0.7 ? 'priority-high' : 
+                                       action.probability >= 0.4 ? 'priority-medium' : 'priority-low';
+                
+                html += `
+                    <li class="list-group-item">
+                        <div>${action.description}</div>
+                        <div class="mt-2">
+                            <small class="text-muted">Probability: <span class="${probabilityClass}">${action.probability.toFixed(2)}</span></small>
+                            <small class="text-muted ms-3">Timeframe: ${action.timeframe}</small>
+                        </div>
+                    </li>
+                `;
+            });
+            
+            html += '</ul>';
+            actionsContainer.innerHTML = html;
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

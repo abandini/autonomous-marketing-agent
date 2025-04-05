@@ -1,0 +1,62 @@
+{
+  "trend_technology_blockchain_for_marketing": {
+    "trend_id": "trend_technology_blockchain_for_marketing",
+    "name": "Blockchain for Marketing",
+    "description": "Blockchain for Marketing is transforming how companies engage with customers through advanced technological capabilities.",
+    "category": "technology",
+    "status": "emerging",
+    "strength": 0.3102806346347604,
+    "adoption_rate": 0.26486815612605996,
+    "strategic_importance": 0.3396397770354481,
+    "first_observed": "2025-01-28T10:57:38.421943",
+    "last_updated": "2025-04-05T10:57:38.421964"
+  },
+  "trend_customer_behavior_subscription_economy_growth": {
+    "trend_id": "trend_customer_behavior_subscription_economy_growth",
+    "name": "Subscription Economy Growth",
+    "description": "Subscription Economy Growth represents a significant shift in how customers interact with brands and make purchasing decisions.",
+    "category": "customer_behavior",
+    "status": "emerging",
+    "strength": 0.6501815262403029,
+    "adoption_rate": 0.28066764288252877,
+    "strategic_importance": 0.514167835470766,
+    "first_observed": "2025-02-23T10:57:38.421943",
+    "last_updated": "2025-04-05T10:57:38.421987"
+  },
+  "trend_marketing_strategy_community-led_growth": {
+    "trend_id": "trend_marketing_strategy_community-led_growth",
+    "name": "Community-Led Growth",
+    "description": "Community-Led Growth is changing how marketing teams approach campaign development and customer engagement.",
+    "category": "marketing_strategy",
+    "status": "emerging",
+    "strength": 0.5164995419141566,
+    "adoption_rate": 0.13392963639824967,
+    "strategic_importance": 0.34434911832553494,
+    "first_observed": "2025-01-26T10:57:38.421943",
+    "last_updated": "2025-04-05T10:57:38.422010"
+  },
+  "trend_marketing_strategy_content_atomization": {
+    "trend_id": "trend_marketing_strategy_content_atomization",
+    "name": "Content Atomization",
+    "description": "Content Atomization is changing how marketing teams approach campaign development and customer engagement.",
+    "category": "marketing_strategy",
+    "status": "emerging",
+    "strength": 0.32922095660151746,
+    "adoption_rate": 0.10956603615550442,
+    "strategic_importance": 0.23691360520069152,
+    "first_observed": "2025-01-05T10:57:38.421943",
+    "last_updated": "2025-04-05T10:57:38.422024"
+  },
+  "trend_regulatory_algorithm_transparency_mandates": {
+    "trend_id": "trend_regulatory_algorithm_transparency_mandates",
+    "name": "Algorithm Transparency Mandates",
+    "description": "Algorithm Transparency Mandates is creating new compliance requirements and changing the rules of engagement in digital marketing.",
+    "category": "regulatory",
+    "status": "emerging",
+    "strength": 0.344933523978973,
+    "adoption_rate": 0.2743357761326043,
+    "strategic_importance": 0.36308985032538216,
+    "first_observed": "2025-02-16T10:57:38.421943",
+    "last_updated": "2025-04-05T10:57:38.422039"
+  }
+}

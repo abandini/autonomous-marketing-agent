@@ -1,0 +1,32 @@
+{
+  "google_analytics": {
+    "enabled": true,
+    "config_path": "../config/google_analytics.json"
+  },
+  "sync_interval": 3600,
+  "data_retention_days": 90,
+  "metrics_mapping": {
+    "website_traffic": {
+      "ga:users": "users",
+      "ga:sessions": "sessions",
+      "ga:pageviews": "pageviews",
+      "activeUsers": "users",
+      "sessions": "sessions",
+      "screenPageViews": "pageviews"
+    },
+    "conversions": {
+      "ga:goalCompletionsAll": "conversions",
+      "ga:goalConversionRateAll": "conversion_rate",
+      "conversions": "conversions",
+      "conversionRate": "conversion_rate"
+    },
+    "content_performance": {
+      "ga:pageviews": "pageviews",
+      "ga:avgTimeOnPage": "avg_time_on_page",
+      "ga:bounceRate": "bounce_rate",
+      "screenPageViews": "pageviews",
+      "averageSessionDuration": "avg_time_on_page",
+      "bounceRate": "bounce_rate"
+    }
+  }
+}
