@@ -1,0 +1,63 @@
+{
+  "schema_version": "v0.9",
+  "name": "SEO Agent",
+  "description": "An agent responsible for search engine optimization tasks including keyword research, content optimization, competitor analysis, and performance tracking.",
+  "contact_email": "seo-agent@example.com",
+  "legal_info_url": "https://example.com/gams/seo/legal",
+  "capabilities": [
+    {
+      "type": "keyword_analysis",
+      "description": "Analyze keywords for SEO potential, including search volume, competition, CPC, and search intent",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/keyword_analysis/openapi.json"
+      }
+    },
+    {
+      "type": "content_optimization",
+      "description": "Optimize content for SEO, including keyword placement, readability, and structure recommendations",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/content_optimization/openapi.json"
+      }
+    },
+    {
+      "type": "competitor_analysis",
+      "description": "Analyze competitors' SEO strategies, including keyword targeting, content strategy, and backlink profiles",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/competitor_analysis/openapi.json"
+      }
+    },
+    {
+      "type": "seo_reporting",
+      "description": "Generate SEO performance reports, including rankings, traffic, and conversion metrics",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/reporting/openapi.json"
+      }
+    },
+    {
+      "type": "ranking_tracking",
+      "description": "Track keyword rankings for websites over time",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/ranking_tracking/openapi.json"
+      }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "seo:keyword_analysis:read", "seo:keyword_analysis:write",
+        "seo:content_optimization:read", "seo:content_optimization:write",
+        "seo:competitor_analysis:read",
+        "seo:reporting:read",
+        "seo:ranking_tracking:read", "seo:ranking_tracking:write"
+      ]
+    }
+  }
+}

@@ -8,19 +8,11 @@ activities across specialized marketing agents.
 import asyncio
 import logging
 import json
-import yaml
 import uuid
-import asyncio
-import time
 from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional, Union, Callable, Type
-
-# Import utility modules
-from core.orchestrator.utils.metrics import MetricsService
-from core.orchestrator.utils.rate_limiter import CategoryRateLimiter
-from core.orchestrator.utils.registry import AgentRegistry, WorkflowRegistry
-from core.orchestrator.utils.config_validator import ConfigValidator
-from core.orchestrator.cycle import ContinuousImprovementCycle
+from enum import Enum
+from typing import Dict, List, Any, Callable, Awaitable, Optional, Tuple
+import yaml
 
 # Configure logging
 logging.basicConfig(
@@ -279,11 +271,13 @@ class ContinuousImprovementCycle:
         }
 
 class MarketingOrchestrator:
-    """Central orchestrator that coordinates all marketing agents and activities.
+    """
+    Central orchestrator that coordinates all marketing agents and activities.
     
-    This class serves as the central coordination point for the GAMS system,
-    managing specialized marketing agents, workflows, campaigns, and improvement cycles.
-    It provides a unified interface for controlling the entire marketing system.
+    The orchestrator is responsible for:
+    1. Initializing and managing all specialized agents
+    2. Coordinating workflows across agents
+    3. Managing the execution of marketing campaigns
     4. Monitoring performance and adjusting strategies
     """
     

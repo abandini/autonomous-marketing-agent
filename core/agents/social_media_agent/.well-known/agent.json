@@ -1,0 +1,42 @@
+{
+  "schema_version": "v0.9",
+  "name": "Social Media Agent",
+  "description": "An agent responsible for social media marketing tasks including content creation, scheduling, engagement tracking, and audience analysis.",
+  "contact_email": "social-media-agent@example.com",
+  "legal_info_url": "https://example.com/gams/social_media/legal",
+  "capabilities": [
+    {
+      "type": "content_creation",
+      "description": "Create social media content and posts.",
+      "api": { "type": "openapi", "url": "/api/agents/social_media/content_creation/openapi.json" }
+    },
+    {
+      "type": "scheduling",
+      "description": "Schedule social media posts across multiple platforms.",
+      "api": { "type": "openapi", "url": "/api/agents/social_media/scheduling/openapi.json" }
+    },
+    {
+      "type": "engagement_tracking",
+      "description": "Track engagement metrics like likes, comments, shares, and impressions.",
+      "api": { "type": "openapi", "url": "/api/agents/social_media/engagement_tracking/openapi.json" }
+    },
+    {
+      "type": "audience_analysis",
+      "description": "Analyze social media audience demographics and interests.",
+      "api": { "type": "openapi", "url": "/api/agents/social_media/audience_analysis/openapi.json" }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "social_media:content_creation:read", "social_media:content_creation:write",
+        "social_media:scheduling:read", "social_media:scheduling:write",
+        "social_media:engagement_tracking:read",
+        "social_media:audience_analysis:read"
+      ]
+    }
+  }
+}

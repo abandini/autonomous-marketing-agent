@@ -9,7 +9,7 @@ It serves the frontend files and provides API endpoints for the dashboard.
 import os
 import sys
 import json
-from flask import Flask, send_from_directory, jsonify, request
+from flask import Flask, send_from_directory, send_file, jsonify, request
 from flask_cors import CORS
 
 # Add the project root to the path so we can import modules
@@ -33,8 +33,33 @@ CORS(app)
 # Serve static files from the frontend directory
 @app.route('/')
 def index():
-    """Serve the operator dashboard."""
-    return send_from_directory('.', 'operator_dashboard.html')
+    """Serve the operator dashboard HTML."""
+    return send_file('operator_dashboard.html')
+
+@app.route('/test_gams_control.html')
+def test_gams_control():
+    """Serve the test GAMS control HTML page."""
+    return send_file('test_gams_control.html')
+
+@app.route('/operator_dashboard_fixed.js')
+def operator_dashboard_fixed():
+    """Serve the fixed JavaScript file."""
+    return send_file('operator_dashboard_fixed.js')
+
+@app.route('/test_fixed_gams_control.html')
+def test_fixed_gams_control():
+    """Serve the test fixed GAMS control HTML page."""
+    return send_file('test_fixed_gams_control.html')
+
+@app.route('/fixed_dashboard')
+def fixed_dashboard():
+    """Serve the fixed operator dashboard HTML page."""
+    return send_file('fixed_operator_dashboard.html')
+
+@app.route('/simple_gams_test')
+def simple_gams_test():
+    """Serve the simple GAMS test HTML page."""
+    return send_file('simple_gams_test.html')
 
 @app.route('/test')
 def test_page():
@@ -83,7 +108,7 @@ if OPERATOR_API_AVAILABLE:
         return get_strategy()
         
     # Financial endpoints are implemented directly below, no need for these proxy functions
-    
+        
     # Financial endpoints are implemented directly below, no need for these proxy functions
         
     @app.route('/api/operator/experiments/active', methods=['GET'])
@@ -822,25 +847,26 @@ def system_control():
             'message': f"Failed to control GAMS: {str(e)}"
         }), 500
 
-def run_server(host='0.0.0.0', port=5000, debug=True):
+def run_server(host='0.0.0.0', port=5011, debug=True):
     """Run the Flask server.
     
     Args:
         host (str): Host to run the server on. Default is '0.0.0.0' to allow external connections.
-        port (int): Port to run the server on. Default is 5000.
+        port (int): Port to run the server on. Default is 5011.
         debug (bool): Whether to run in debug mode. Default is True.
     """
-    print(f"Starting Operator Dashboard server at http://{host if host != '0.0.0.0' else 'localhost'}:{port}")
+    print(f"Starting Operator Dashboard server at http://localhost:{port}")
     print(f"Dashboard will be available at: http://localhost:{port}/")
     print(f"API endpoints will be available at: http://localhost:{port}/api/operator/...")
-    app.run(host=host, port=port, debug=debug)
+    app.run(host='0.0.0.0', port=port, debug=debug)
 
 if __name__ == '__main__':
     import argparse
+    import datetime
     
     parser = argparse.ArgumentParser(description='Run the GAMS Operator Dashboard server')
     parser.add_argument('--host', default='0.0.0.0', help='Host to run the server on')
-    parser.add_argument('--port', type=int, default=5001, help='Port to run the server on')
+    parser.add_argument('--port', type=int, default=5011, help='Port to run the server on')
     parser.add_argument('--debug', action='store_true', help='Run in debug mode')
     
     args = parser.parse_args()

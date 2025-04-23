@@ -135,8 +135,8 @@ function initializeDashboard() {
                 // Show a notification to confirm the button click is being triggered
                 showNotification('DEBUG: Button click triggered', 'info');
                 
-                // Call the simplified GAMS control function
-                sendGamsControlRequest();
+                // Call the direct GAMS control function for more reliable operation
+                handleDirectGamsControl();
             });
         } else {
             console.error('GAMS control button not found');
@@ -295,6 +295,10 @@ function handleDirectGamsControl() {
     console.log('Direct GAMS control handler called');
     showNotification('Processing GAMS control request...', 'info');
     
+    // Disable the button to prevent multiple clicks
+    const controlBtn = document.getElementById('gams-control-btn');
+    if (controlBtn) controlBtn.disabled = true;
+    
     // Determine action based on current system status
     const action = dashboardState.systemStatus.running ? 'stop' : 'start';
     console.log(`Attempting to ${action} GAMS system directly`);
@@ -310,37 +314,78 @@ function handleDirectGamsControl() {
             console.log(`XHR response received: status ${xhr.status}`);
             console.log('Response text:', xhr.responseText);
             
+            // Re-enable the button
+            if (controlBtn) controlBtn.disabled = false;
+            
             if (xhr.status >= 200 && xhr.status < 300) {
                 try {
                     const data = JSON.parse(xhr.responseText);
                     console.log('Parsed response data:', data);
                     
                     if (data.system_status) {
-                        // Update dashboard state
+                        // Update dashboard state with the new system status
                         dashboardState.systemStatus = data.system_status;
                         
-                        // Update UI
+                        // Make sure lastStarted is set for the updateSystemStatusUI function
+                        if (data.system_status.running && data.system_status.start_time) {
+                            dashboardState.systemStatus.lastStarted = data.system_status.start_time;
+                        }
+                        
+                        // Update the UI to reflect the new system status
+                        updateSystemStatusUI();
+                        
+                        // Show success notification
+                        showNotification(`GAMS system ${action}ed successfully`, 'success');
+                    } else {
+                        // Update UI manually if system_status is not in the response
                         const statusBadge = document.getElementById('system-status-badge');
                         const statusText = document.getElementById('system-status-text');
-                        const controlBtn = document.getElementById('gams-control-btn');
                         
                         if (statusBadge && statusText && controlBtn) {
-                            if (data.system_status.running) {
+                            if (action === 'start') {
+                                dashboardState.systemStatus.running = true;
+                                dashboardState.systemStatus.lastStarted = new Date().toISOString();
                                 statusBadge.className = 'badge bg-success';
                                 statusBadge.textContent = 'Running';
-                                statusText.textContent = `Running since ${new Date(data.system_status.start_time).toLocaleString()}`;
+                                statusText.textContent = `Running since ${new Date().toLocaleString()}`;
                                 controlBtn.innerHTML = '<i class="bi bi-stop-fill me-1"></i> Stop GAMS';
                                 controlBtn.className = 'btn btn-danger btn-lg';
                             } else {
+                                dashboardState.systemStatus.running = false;
                                 statusBadge.className = 'badge bg-danger';
                                 statusBadge.textContent = 'Stopped';
                                 statusText.textContent = 'System is currently stopped';
                                 controlBtn.innerHTML = '<i class="bi bi-play-fill me-1"></i> Start GAMS';
                                 controlBtn.className = 'btn btn-success btn-lg';
                             }
-
-// End of file
+                            
+                            // Show success notification
+                            showNotification(`GAMS system ${action}ed successfully`, 'success');
                         }
+                    }
+                } catch (e) {
+                    console.error('Error parsing response:', e);
+                    showNotification(`Error parsing response: ${e.message}`, 'error');
+                }
+            } else {
+                console.error(`HTTP error: ${xhr.status} ${xhr.statusText}`);
+                showNotification(`Server error: ${xhr.status} ${xhr.statusText}`, 'error');
+            }
+        }
+    };
+    
+    // Set up error handler
+    xhr.onerror = function() {
+        console.error('Network error occurred');
+        showNotification('Network error when trying to control GAMS', 'error');
+        if (controlBtn) controlBtn.disabled = false;
+    };
+    
+    // Send the request
+    const payload = JSON.stringify({ action });
+    console.log('Sending payload:', payload);
+    xhr.send(payload);
+}
 
 // End of file
                         
@@ -752,20 +797,16 @@ function updateSystemStatusUI() {
             statusBadge.className = 'badge bg-success';
             statusBadge.textContent = 'Running';
             statusText.textContent = `Running since ${new Date(dashboardState.systemStatus.lastStarted).toLocaleString()}`;
-            controlBtn.textContent = 'Stop GAMS';
-            controlBtn.className = 'btn btn-danger';
+            controlBtn.innerHTML = '<i class="bi bi-stop-fill me-1"></i> Stop GAMS';
+            controlBtn.className = 'btn btn-danger btn-lg';
         } else {
             statusBadge.className = 'badge bg-danger';
             statusBadge.textContent = 'Stopped';
             statusText.textContent = 'System is currently stopped';
-            controlBtn.textContent = 'Start GAMS';
-            controlBtn.className = 'btn btn-success';
+            controlBtn.innerHTML = '<i class="bi bi-play-fill me-1"></i> Start GAMS';
+            controlBtn.className = 'btn btn-success btn-lg';
         }
-
-// End of file
     }
-
-// End of file
 }
 
 // End of file
@@ -1411,3 +1452,24 @@ function refreshCompetitiveIntelligence() {
     // Update loading state
     dashboardState.loading.competitiveIntelligence = false;
 }
+
+    } // End of setupDashboard function
+    
+    // Check if DOM is already loaded
+    if (document.readyState === 'loading') {
+        console.log('DOM still loading, waiting for DOMContentLoaded event');
+        document.addEventListener('DOMContentLoaded', setupDashboard);
+    } else {
+        console.log('DOM already loaded, setting up dashboard immediately');
+        setupDashboard();
+    }
+    
+    // Initialize dashboard data
+    loadDashboardData();
+    updateSystemStatusUI();
+    loadWebsiteRepoSettings();
+    
+    // Set up refresh intervals
+    setInterval(() => refreshDashboardData(), CONFIG.refreshIntervals.financial);
+    setInterval(() => refreshWebsiteRepoSettings(), CONFIG.refreshIntervals.approvals);
+} // End of initializeDashboard function

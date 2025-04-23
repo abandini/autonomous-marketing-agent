@@ -10,11 +10,7 @@ import asyncio
 from typing import Dict, List, Any, Optional
 from abc import ABC, abstractmethod
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configure logging (configured centrally in main application)
 logger = logging.getLogger(__name__)
 
 class BaseAgent(ABC):
@@ -142,6 +138,18 @@ class BaseAgent(ABC):
             Dict containing agent metrics
         """
         return self.metrics
+        
+    async def call_mcp(self, mcp_id: str, capability: str, params: Dict[str, Any] = None) -> Dict[str, Any]:
+        """
+        Invoke an MCP service via the A2A resolver.
+        """
+        import os, httpx
+        resolver_url = os.getenv("A2A_RESOLVER_URL", "http://localhost:8000/invoke")
+        payload = {"agent": mcp_id, "capability": capability, "params": params or {}}
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(resolver_url, json=payload)
+            resp.raise_for_status()
+            return resp.json()
         
     @abstractmethod
     async def initialize(self) -> Dict[str, Any]:

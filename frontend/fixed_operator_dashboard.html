@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Operator Dashboard (Fixed)</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="operator_dashboard.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h5>GAMS</h5>
+                        <p class="text-muted small">Generative Autonomous Marketing System</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#dashboard">
+                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#approvals">
+                                <i class="bi bi-check-circle me-2"></i>Approvals
+                                <span id="approval-badge" class="badge bg-danger rounded-pill float-end">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#financial">
+                                <i class="bi bi-graph-up me-2"></i>Financial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#experiments">
+                                <i class="bi bi-lightning me-2"></i>Experiments
+                                <span id="experiments-badge" class="badge bg-primary rounded-pill float-end">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#compliance">
+                                <i class="bi bi-shield-check me-2"></i>Compliance
+                                <span id="compliance-badge" class="badge bg-warning rounded-pill float-end">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#strategy">
+                                <i class="bi bi-bullseye me-2"></i>Strategy
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#competitive-intelligence">
+                                <i class="bi bi-binoculars me-2"></i>Competitive Intelligence
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#settings">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">GAMS Operator Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            <i class="bi bi-calendar3"></i>
+                            This week
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- Dashboard tab -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">System Status</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="getSystemStatus()">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <h4 class="me-2 mb-0">Status:</h4>
+                                            <span id="system-status-badge" class="badge bg-danger">Stopped</span>
+                                        </div>
+                                        <p id="system-status-text">System is currently stopped</p>
+                                        <button id="gams-control-btn" class="btn btn-success btn-lg">
+                                            <i class="bi bi-play-fill me-1"></i> Start GAMS
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Quick Stats</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="refreshDashboardData()">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <h6>Revenue (MTD)</h6>
+                                                <h3 id="revenue-mtd">$0</h3>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <h6>Conversion Rate</h6>
+                                                <h3 id="conversion-rate">0%</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <h6>Active Experiments</h6>
+                                                <h3 id="active-experiments-count">0</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <h6>Pending Approvals</h6>
+                                                <h3 id="pending-approvals-count">0</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Recent Activity</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Time</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="recent-activity-table">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No recent activity</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other tabs would go here -->
+                    <div class="tab-pane fade" id="approvals">
+                        <h2>Pending Approvals</h2>
+                        <p>This section shows content that requires operator approval before being published.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="financial">
+                        <h2>Financial Dashboard</h2>
+                        <p>This section shows financial metrics and performance data.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="experiments">
+                        <h2>Active Experiments</h2>
+                        <p>This section shows ongoing marketing experiments and their results.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="compliance">
+                        <h2>Compliance Issues</h2>
+                        <p>This section shows potential compliance issues that need attention.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="strategy">
+                        <h2>Strategy Settings</h2>
+                        <p>This section allows you to adjust the overall marketing strategy parameters.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="competitive-intelligence">
+                        <h2>Competitive Intelligence</h2>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <p>This section provides insights on competitor activities and market positioning.</p>
+                            <button id="refresh-competitive-intelligence" class="btn btn-outline-primary">
+                                <i class="bi bi-arrow-clockwise me-1"></i> Refresh Data
+                            </button>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5>Competitive Landscape Overview</h5>
+                                <p>The Competitive Intelligence module monitors the market landscape and provides strategic insights:</p>
+                                <ul>
+                                    <li><strong>Real-Time Competitor Tracking:</strong> Website changes, product/service monitoring, pricing strategy detection</li>
+                                    <li><strong>Market Positioning Analysis:</strong> Share of voice measurement, positioning maps, perception analysis</li>
+                                    <li><strong>Strategic Response Development:</strong> Automated countermeasures, opportunity gap exploitation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="settings">
+                        <h2>Settings</h2>
+                        <p>Configure the GAMS system settings and integrations.</p>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>Website & Repository Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="websiteRepoSettingsForm">
+                                    <div class="mb-3">
+                                        <label for="websiteUrl" class="form-label">Website URL</label>
+                                        <input type="url" class="form-control" id="websiteUrl" placeholder="https://example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gitRepoUrl" class="form-label">Git Repository URL</label>
+                                        <input type="url" class="form-control" id="gitRepoUrl" placeholder="https://github.com/username/repo">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gitUsername" class="form-label">Git Username</label>
+                                        <input type="text" class="form-control" id="gitUsername">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gitToken" class="form-label">Git Access Token</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="gitToken">
+                                            <button class="btn btn-outline-secondary" type="button" id="showGitToken">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>API Testing</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex gap-2">
+                                    <button id="direct-test-btn" class="btn btn-primary">
+                                        Test GAMS Control API (Fetch)
+                                    </button>
+                                    <button id="direct-api-test" class="btn btn-secondary">
+                                        Test GAMS Control API (XMLHttpRequest)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container" class="position-fixed top-0 end-0 p-3"></div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="operator_dashboard_fixed.js"></script>
+</body>
+</html>

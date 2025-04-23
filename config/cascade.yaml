@@ -1,0 +1,94 @@
+cascade:
+  # 1) Daily keyword trends
+  - id: daily_keyword_trends
+    schedule: "0 8 * * *"
+    steps:
+      - tool: web.search_query
+        args:
+          q: "top 10 marketing keywords by monthly search volume industrial fluid management"
+          recency: 7
+      - tool: python
+        code: |
+          import pandas as pd, json, hashlib, os, datetime
+          df = pd.DataFrame(${prev})        # WindSurf injects previous step output here
+          df['WoW_change'] = df['volume'].pct_change(1)
+          winners = df[df['WoW_change'] > 0.10]
+          winners.to_json('/tmp/kw.json', orient='records')
+          output = winners  # will feed next step
+      - tool: python_user_visible
+        code: |
+          import pandas as pd, matplotlib.pyplot as plt, json
+          winners = pd.read_json('/tmp/kw.json')
+          fig, ax = plt.subplots()
+          ax.bar(winners['keyword'], winners['WoW_change'])
+          ax.set_title("Keywords ↑ WoW > 10 %")
+          fig.tight_layout()
+          plt.show()
+      - tool: automations.create
+        args:
+          title: "Weekly Keyword Report"
+          prompt: "Tell me the weekly keyword trends (file: /tmp/kw.json)."
+          schedule: |
+            BEGIN:VEVENT
+            RRULE:FREQ=WEEKLY;BYDAY=FR;BYHOUR=9;BYMINUTE=0;BYSECOND=0
+            END:VEVENT
+
+  # 2) Hourly competitor alerts
+  - id: hourly_competitor_alerts
+    schedule: "0 * * * *"
+    steps:
+      - tool: web.search_query
+        args:
+          q: "zebra skimmers competitors coolant automation price OR product"
+          recency: 1
+      - tool: python
+        code: |
+          alerts = [item for item in ${prev} if "price" in item['title'].lower()]
+          with open('/tmp/alerts.txt', 'w') as f:
+              for a in alerts:
+                  f.write(a['title'] + " — " + a['q'] + "\n")
+          output = '/tmp/alerts.txt'
+      - tool: automations.create
+        args:
+          title: "Competitor Alert"
+          prompt: "New competitor update. See details in /tmp/alerts.txt"
+          dtstart_offset_json: '{"minutes":0}'
+
+  # 3) Revenue dip monitor – runs every 5 min instead of file‑watch
+  - id: revenue_monitor
+    schedule: "*/5 * * * *"
+    steps:
+      - tool: python
+        code: |
+          import json, hashlib, os
+          path = "data/revenue/performance_metrics.json"
+          metrics = json.load(open(path))
+          dips = {k:v for k,v in metrics.items() if v < 0.9 * v['target']}
+          output = dips
+      - condition: "${prev} != {}"   # only continue if dips dict not empty
+      - tool: python_user_visible
+        code: |
+          import pandas as pd
+          from ace_tools import display_dataframe_to_user
+          df = pd.DataFrame.from_dict(${prev}, orient='index')
+          display_dataframe_to_user("Revenue dips", df)
+      - tool: automations.create
+        args:
+          title: "Revenue Dip Action"
+          prompt: "Revenue dipped below target. See dashboard."
+          dtstart_offset_json: '{"minutes":0}'
+
+  # 4) Weekly architecture diagram
+  - id: weekly_diagram
+    schedule: "0 10 * * MON"
+    steps:
+      - tool: image_gen
+        args:
+          prompt: "System architecture diagram of GAMS modules and data flow."
+          size: "1024x768"
+      - tool: canmore.comment
+        args:
+          updates:
+            - pattern: ".*"
+              multiple: false
+              replacement: "Updated diagram dropped into canvas on ${DATE}"

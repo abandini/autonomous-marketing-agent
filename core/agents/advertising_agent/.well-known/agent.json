@@ -1,0 +1,42 @@
+{
+  "schema_version": "v0.9",
+  "name": "Advertising Agent",
+  "description": "An agent responsible for digital advertising tasks including campaign management, ad creation, budget optimization, and performance tracking.",
+  "contact_email": "advertising-agent@example.com",
+  "legal_info_url": "https://example.com/gams/advertising/legal",
+  "capabilities": [
+    {
+      "type": "campaign_management",
+      "description": "Create and manage advertising campaigns across multiple channels.",
+      "api": { "type": "openapi", "url": "/api/agents/advertising/campaign_management/openapi.json" }
+    },
+    {
+      "type": "ad_creation",
+      "description": "Create ad creatives and formats for different platforms.",
+      "api": { "type": "openapi", "url": "/api/agents/advertising/ad_creation/openapi.json" }
+    },
+    {
+      "type": "budget_optimization",
+      "description": "Optimize advertising budgets and bids based on performance.",
+      "api": { "type": "openapi", "url": "/api/agents/advertising/budget_optimization/openapi.json" }
+    },
+    {
+      "type": "performance_tracking",
+      "description": "Track advertising performance metrics and generate reports.",
+      "api": { "type": "openapi", "url": "/api/agents/advertising/performance_tracking/openapi.json" }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "advertising:campaign_management:read", "advertising:campaign_management:write",
+        "advertising:ad_creation:read", "advertising:ad_creation:write",
+        "advertising:budget_optimization:read", "advertising:budget_optimization:write",
+        "advertising:performance_tracking:read"
+      ]
+    }
+  }
+}

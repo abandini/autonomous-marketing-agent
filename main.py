@@ -6,6 +6,8 @@ It initializes and coordinates all components of the marketing automation system
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 import sys
 import logging
 import asyncio

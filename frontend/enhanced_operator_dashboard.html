@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced GAMS Operator Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="operator_dashboard.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h5>GAMS</h5>
+                        <p class="text-muted small">Generative Autonomous Marketing System</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#dashboard">
+                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#analytics">
+                                <i class="bi bi-graph-up me-2"></i>Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#orchestrator">
+                                <i class="bi bi-diagram-3 me-2"></i>Orchestrator
+                                <span id="cycle-badge" class="badge bg-primary rounded-pill float-end">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#approvals">
+                                <i class="bi bi-check-circle me-2"></i>Approvals
+                                <span id="approval-badge" class="badge bg-danger rounded-pill float-end">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#settings">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Enhanced GAMS Operator Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            <i class="bi bi-calendar3"></i>
+                            This week
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- Dashboard tab -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">System Control</h5>
+                                        <div class="system-status me-3 d-inline-block">
+                                            <span class="status-indicator"></span>
+                                            <span class="status-text">Checking status...</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Control the GAMS system operation.</p>
+                                        <button id="gams-control-btn" class="btn btn-success btn-lg">
+                                            <i class="bi bi-play-fill me-1"></i> Start GAMS
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Quick Stats</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" id="refresh-stats-btn">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <div class="stat-label">Active Campaigns</div>
+                                                <h3 id="active-campaigns-count">0</h3>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <div class="stat-label">Active Experiments</div>
+                                                <h3 id="active-experiments-count">0</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="stat-label">Compliance Issues</div>
+                                                <h3 id="compliance-issues-count">0</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="stat-label">Pending Approvals</div>
+                                                <h3 id="pending-approvals-count">0</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>System Overview</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6>Recent Activity</h6>
+                                                <div id="recent-activity-list" class="list-group">
+                                                    <div class="list-group-item">No recent activity</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6>System Health</h6>
+                                                <div class="progress mb-3">
+                                                    <div id="system-health-indicator" class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                                </div>
+                                                <div id="system-health-details">
+                                                    <p><strong>Uptime:</strong> <span id="system-uptime">0 minutes</span></p>
+                                                    <p><strong>Version:</strong> <span id="system-version">1.0.0</span></p>
+                                                    <p><strong>Last Started:</strong> <span id="system-last-started">Never</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics tab -->
+                    <div class="tab-pane fade" id="analytics">
+                        <h2>Analytics Dashboard</h2>
+                        <p>View and analyze marketing performance metrics.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Key Metrics</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" id="refresh-metrics-btn">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <div class="stat-label">Page Views</div>
+                                                <h3 id="page-views-metric">0</h3>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <div class="stat-label">Conversions</div>
+                                                <h3 id="conversions-metric">0</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="stat-label">Revenue</div>
+                                                <h3 id="revenue-metric">$0.00</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="stat-label">Engagement Rate</div>
+                                                <h3 id="engagement-metric">0.0%</h3>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <canvas id="metrics-chart" height="200"></canvas>
+                                        </div>
+                                        <div class="text-muted small mt-2">
+                                            Last updated: <span id="metrics-last-updated">Never</span>
+                                            <span id="metrics-loading" class="spinner-border spinner-border-sm ms-2" role="status" style="display: none;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Recommendations</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" id="refresh-recommendations-btn">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="recommendations-container">
+                                            <div class="alert alert-info">
+                                                Loading recommendations...
+                                            </div>
+                                        </div>
+                                        <div class="text-muted small mt-2">
+                                            Last updated: <span id="recommendations-last-updated">Never</span>
+                                            <span id="recommendations-loading" class="spinner-border spinner-border-sm ms-2" role="status" style="display: none;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Content Performance</h5>
+                                <button class="btn btn-sm btn-outline-secondary" id="refresh-content-btn">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>URL</th>
+                                                <th>Page Views</th>
+                                                <th>Bounce Rate</th>
+                                                <th>Avg. Time on Page</th>
+                                                <th>Conversion Rate</th>
+                                                <th>Engagement Rate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="content-performance-table-body">
+                                            <tr>
+                                                <td colspan="6" class="text-center">Loading content performance data...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-3">
+                                        <div class="stat-label">Total Page Views</div>
+                                        <h4 id="total-page-views">0</h4>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="stat-label">Avg. Bounce Rate</div>
+                                        <h4 id="avg-bounce-rate">0.0%</h4>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="stat-label">Avg. Conversion Rate</div>
+                                        <h4 id="avg-conversion-rate">0.0%</h4>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="stat-label">Avg. Engagement Rate</div>
+                                        <h4 id="avg-engagement-rate">0.0%</h4>
+                                    </div>
+                                </div>
+                                <div class="text-muted small mt-2">
+                                    Last updated: <span id="content-last-updated">Never</span>
+                                    <span id="contentPerformance-loading" class="spinner-border spinner-border-sm ms-2" role="status" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>Performance Report</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="report-start-date" class="form-label">Start Date</label>
+                                        <input type="date" class="form-control" id="report-start-date">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="report-end-date" class="form-label">End Date</label>
+                                        <input type="date" class="form-control" id="report-end-date">
+                                    </div>
+                                    <div class="col-md-4 d-flex align-items-end">
+                                        <button id="generate-report-btn" class="btn btn-primary">
+                                            Generate Report
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="report-summary" class="mb-3">
+                                    <h5>Report Summary</h5>
+                                    <p>Select a date range and generate a report to view performance data.</p>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6>Website Traffic</h6>
+                                                <div id="traffic-summary" class="metric-summary">
+                                                    <div class="alert alert-info">No data available</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6>Conversions</h6>
+                                                <div id="conversions-summary" class="metric-summary">
+                                                    <div class="alert alert-info">No data available</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6>Engagement</h6>
+                                                <div id="engagement-summary" class="metric-summary">
+                                                    <div class="alert alert-info">No data available</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h6>Revenue</h6>
+                                                <div id="revenue-summary" class="metric-summary">
+                                                    <div class="alert alert-info">No data available</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <canvas id="performance-chart" height="300"></canvas>
+                                </div>
+                                
+                                <div class="text-muted small mt-2">
+                                    Last updated: <span id="report-last-updated">Never</span>
+                                    <span id="performanceReport-loading" class="spinner-border spinner-border-sm ms-2" role="status" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orchestrator tab -->
+                    <div class="tab-pane fade" id="orchestrator">
+                        <h2>Marketing Orchestrator</h2>
+                        <p>Manage the continuous improvement cycles and marketing campaigns.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Active Improvement Cycles</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" id="refresh-cycles-btn">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="cycles-container">
+                                            <div class="alert alert-info">
+                                                Loading improvement cycles...
+                                            </div>
+                                        </div>
+                                        <button id="create-cycle-btn" class="btn btn-primary mt-3">
+                                            <i class="bi bi-plus-circle me-1"></i> Create New Cycle
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Marketing Goals</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" id="refresh-goals-btn">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="goals-container">
+                                            <div class="alert alert-info">
+                                                Loading marketing goals...
+                                            </div>
+                                        </div>
+                                        <button id="create-goal-btn" class="btn btn-primary mt-3">
+                                            <i class="bi bi-plus-circle me-1"></i> Create New Goal
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Active Campaigns</h5>
+                                <button class="btn btn-sm btn-outline-secondary" id="refresh-campaigns-btn">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th>Goal</th>
+                                                <th>Metrics</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="campaigns-table-body">
+                                            <tr>
+                                                <td colspan="7" class="text-center">Loading campaigns...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button id="create-campaign-btn" class="btn btn-primary mt-3">
+                                    <i class="bi bi-plus-circle me-1"></i> Create New Campaign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Approvals tab -->
+                    <div class="tab-pane fade" id="approvals">
+                        <h2>Pending Approvals</h2>
+                        <p>Review and approve or reject pending items.</p>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Content Approvals</h5>
+                                <button class="btn btn-sm btn-outline-secondary" id="refresh-approvals-btn">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="approvals-container">
+                                    <div class="alert alert-info">
+                                        Loading pending approvals...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings tab -->
+                    <div class="tab-pane fade" id="settings">
+                        <h2>Settings</h2>
+                        <p>Configure the GAMS system settings and integrations.</p>
+                        
+                        <!-- Settings Navigation Tabs -->
+                        <ul class="nav nav-tabs mb-4" id="settingsTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general-settings" type="button" role="tab" aria-controls="general-settings" aria-selected="true">General</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="websites-tab" data-bs-toggle="tab" data-bs-target="#websites-settings" type="button" role="tab" aria-controls="websites-settings" aria-selected="false">Websites</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="repositories-tab" data-bs-toggle="tab" data-bs-target="#repositories-settings" type="button" role="tab" aria-controls="repositories-settings" aria-selected="false">Repositories</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="api-tab" data-bs-toggle="tab" data-bs-target="#api-settings" type="button" role="tab" aria-controls="api-settings" aria-selected="false">API</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-settings" type="button" role="tab" aria-controls="marketing-settings" aria-selected="false">Marketing</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="integrations-tab" data-bs-toggle="tab" data-bs-target="#integrations-settings" type="button" role="tab" aria-controls="integrations-settings" aria-selected="false">Integrations</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="cycle-tab" data-bs-toggle="tab" data-bs-target="#cycle-settings" type="button" role="tab" aria-controls="cycle-settings" aria-selected="false">Improvement Cycle</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="compliance-tab" data-bs-toggle="tab" data-bs-target="#compliance-settings" type="button" role="tab" aria-controls="compliance-settings" aria-selected="false">Compliance</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="backup-tab" data-bs-toggle="tab" data-bs-target="#backup-settings" type="button" role="tab" aria-controls="backup-settings" aria-selected="false">Backup</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="ui-tab" data-bs-toggle="tab" data-bs-target="#ui-settings" type="button" role="tab" aria-controls="ui-settings" aria-selected="false">UI</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced-settings" type="button" role="tab" aria-controls="advanced-settings" aria-selected="false">Advanced</button>
+                            </li>
+                        </ul>
+                        
+                        <!-- Settings Tab Content -->
+                        <div class="tab-content" id="settingsTabsContent">
+                            <!-- General Settings -->
+                            <div class="tab-pane fade show active" id="general-settings" role="tabpanel" aria-labelledby="general-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>General System Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="system-name" class="form-label">System Name</label>
+                                                <input type="text" class="form-control" id="system-name" value="GAMS Marketing System">
+                                                <div class="form-text">Name for this GAMS instance</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="operator-email" class="form-label">Operator Email</label>
+                                                <input type="email" class="form-control" id="operator-email" placeholder="your.email@example.com">
+                                                <div class="form-text">Email for system notifications and alerts</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="log-level" class="form-label">Log Level</label>
+                                                <select class="form-select" id="log-level">
+                                                    <option value="debug">Debug</option>
+                                                    <option value="info" selected>Info</option>
+                                                    <option value="warning">Warning</option>
+                                                    <option value="error">Error</option>
+                                                </select>
+                                                <div class="form-text">Logging detail level</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="refresh-interval" class="form-label">Dashboard Refresh Interval (seconds)</label>
+                                                <input type="number" class="form-control" id="refresh-interval" value="60" min="10" max="3600">
+                                                <div class="form-text">How often the dashboard refreshes data</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="max-concurrent-tasks" class="form-label">Max Concurrent Tasks</label>
+                                                <input type="number" class="form-control" id="max-concurrent-tasks" value="5" min="1" max="20">
+                                                <div class="form-text">Maximum number of tasks that can run simultaneously</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="timezone" class="form-label">Timezone</label>
+                                                <select class="form-select" id="timezone">
+                                                    <option value="America/New_York" selected>Eastern Time (ET)</option>
+                                                    <option value="America/Chicago">Central Time (CT)</option>
+                                                    <option value="America/Denver">Mountain Time (MT)</option>
+                                                    <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                                                    <option value="UTC">UTC</option>
+                                                </select>
+                                                <div class="form-text">Timezone for reporting and scheduling</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-general-settings-btn">Save General Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Notification Preferences</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="notification-email" class="form-label">Notification Email</label>
+                                                <input type="email" class="form-control" id="notification-email" placeholder="your.email@example.com">
+                                            </div>
+                                            <div class="form-check form-switch mb-2">
+                                                <input class="form-check-input" type="checkbox" id="email-system-alerts" checked>
+                                                <label class="form-check-label" for="email-system-alerts">System Alerts</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-2">
+                                                <input class="form-check-input" type="checkbox" id="email-performance-reports" checked>
+                                                <label class="form-check-label" for="email-performance-reports">Weekly Performance Reports</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-2">
+                                                <input class="form-check-input" type="checkbox" id="email-approval-requests" checked>
+                                                <label class="form-check-label" for="email-approval-requests">Approval Requests</label>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-notifications-btn">Save Notification Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>API Testing</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2">
+                                            <button id="direct-test-btn" class="btn btn-primary">
+                                                Test GAMS Control API (Fetch)
+                                            </button>
+                                            <button id="direct-api-test" class="btn btn-secondary">
+                                                Test GAMS Control API (XMLHttpRequest)
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- API Configuration Settings -->
+                            <div class="tab-pane fade" id="api-settings" role="tabpanel" aria-labelledby="api-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>API Configuration</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="api-key" class="form-label">API Key</label>
+                                                <input type="password" class="form-control" id="api-key">
+                                                <div class="form-text">Authentication key for GAMS API</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="api-endpoint" class="form-label">API Endpoint</label>
+                                                <input type="url" class="form-control" id="api-endpoint" value="http://localhost:5050/api">
+                                                <div class="form-text">Base URL for API access</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="request-timeout" class="form-label">Request Timeout (seconds)</label>
+                                                <input type="number" class="form-control" id="request-timeout" value="30" min="5" max="300">
+                                                <div class="form-text">Timeout for API requests in seconds</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="rate-limiting" checked>
+                                                <label class="form-check-label" for="rate-limiting">Enable API Rate Limiting</label>
+                                                <div class="form-text">Limit API requests to prevent throttling</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-api-settings-btn">Save API Settings</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="test-api-connection-btn">Test API Connection</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Marketing Channel Settings -->
+                            <div class="tab-pane fade" id="marketing-settings" role="tabpanel" aria-labelledby="marketing-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Marketing Channel Allocation</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="organic-allocation" class="form-label">Organic Traffic Allocation (%)</label>
+                                                <input type="number" class="form-control" id="organic-allocation" value="40" min="0" max="100">
+                                                <div class="form-text">Percentage of budget for organic marketing</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="paid-allocation" class="form-label">Paid Advertising Allocation (%)</label>
+                                                <input type="number" class="form-control" id="paid-allocation" value="30" min="0" max="100">
+                                                <div class="form-text">Percentage of budget for paid advertising</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email-allocation" class="form-label">Email Marketing Allocation (%)</label>
+                                                <input type="number" class="form-control" id="email-allocation" value="20" min="0" max="100">
+                                                <div class="form-text">Percentage of budget for email marketing</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="affiliate-allocation" class="form-label">Affiliate Marketing Allocation (%)</label>
+                                                <input type="number" class="form-control" id="affiliate-allocation" value="10" min="0" max="100">
+                                                <div class="form-text">Percentage of budget for affiliate marketing</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="default-campaign-budget" class="form-label">Default Campaign Budget ($)</label>
+                                                <input type="number" class="form-control" id="default-campaign-budget" value="1000" min="100">
+                                                <div class="form-text">Default budget for new campaigns</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-marketing-settings-btn">Save Marketing Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Integrations Settings -->
+                            <div class="tab-pane fade" id="integrations-settings" role="tabpanel" aria-labelledby="integrations-tab">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>External Integrations</h5>
+                                    <button class="btn btn-sm btn-success" id="add-integration-btn">
+                                        <i class="bi bi-plus-circle me-1"></i> Add New Integration
+                                    </button>
+                                </div>
+                                
+                                <!-- Google Analytics Integration -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Google Analytics</h5>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="ga-enabled" checked>
+                                            <label class="form-check-label" for="ga-enabled">Enabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="ga-property-id" class="form-label">Property ID</label>
+                                                <input type="text" class="form-control" id="ga-property-id" placeholder="GA-XXXXXXXXXX">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ga-api-key" class="form-label">API Key</label>
+                                                <input type="password" class="form-control" id="ga-api-key">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ga-client-email" class="form-label">Client Email</label>
+                                                <input type="email" class="form-control" id="ga-client-email">
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-ga-btn">Save</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="test-ga-connection">Test Connection</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <!-- Amazon Associates Integration -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Amazon Associates</h5>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="amazon-enabled">
+                                            <label class="form-check-label" for="amazon-enabled">Enabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="amazon-associate-id" class="form-label">Associate ID</label>
+                                                <input type="text" class="form-control" id="amazon-associate-id" placeholder="yourassociateid-20">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="amazon-api-key" class="form-label">API Key</label>
+                                                <input type="password" class="form-control" id="amazon-api-key">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="amazon-secret-key" class="form-label">Secret Key</label>
+                                                <input type="password" class="form-control" id="amazon-secret-key">
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-amazon-btn">Save</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="test-amazon-connection">Test Connection</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <!-- ClickBank Integration -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">ClickBank</h5>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="clickbank-enabled">
+                                            <label class="form-check-label" for="clickbank-enabled">Enabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="clickbank-account" class="form-label">Account Name</label>
+                                                <input type="text" class="form-control" id="clickbank-account">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="clickbank-api-key" class="form-label">API Key</label>
+                                                <input type="password" class="form-control" id="clickbank-api-key">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="clickbank-secret-key" class="form-label">Secret Key</label>
+                                                <input type="password" class="form-control" id="clickbank-secret-key">
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-clickbank-btn">Save</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="test-clickbank-connection">Test Connection</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Repositories Settings -->
+                            <div class="tab-pane fade" id="repositories-settings" role="tabpanel" aria-labelledby="repositories-tab">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>Git Repositories</h5>
+                                    <button class="btn btn-sm btn-success" id="add-repository-btn">
+                                        <i class="bi bi-plus-circle me-1"></i> Add Repository
+                                    </button>
+                                </div>
+                                
+                                <!-- Content Repository -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Content Repository</h5>
+                                        <span class="badge bg-success">Connected</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Repository URL</label>
+                                                <input type="text" class="form-control" id="content-repo-url" value="https://github.com/yourusername/content-repo.git">
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Branch</label>
+                                                    <input type="text" class="form-control" id="content-repo-branch" value="main">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Access Token</label>
+                                                    <input type="password" class="form-control" id="content-repo-token" value="">
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button type="button" class="btn btn-primary" id="save-content-repo-btn">Save</button>
+                                                <button type="button" class="btn btn-outline-secondary" id="test-content-repo-btn">Test Connection</button>
+                                                <button type="button" class="btn btn-outline-danger" id="remove-content-repo-btn">Remove</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <!-- Website Repository -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Website Repository</h5>
+                                        <span class="badge bg-success">Connected</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label">Repository URL</label>
+                                                <input type="text" class="form-control" id="website-repo-url" value="https://github.com/yourusername/website-repo.git">
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Branch</label>
+                                                    <input type="text" class="form-control" id="website-repo-branch" value="production">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Access Token</label>
+                                                    <input type="password" class="form-control" id="website-repo-token" value="">
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button type="button" class="btn btn-primary" id="save-website-repo-btn">Save</button>
+                                                <button type="button" class="btn btn-outline-secondary" id="test-website-repo-btn">Test Connection</button>
+                                                <button type="button" class="btn btn-outline-danger" id="remove-website-repo-btn">Remove</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Websites Settings -->
+                            <div class="tab-pane fade" id="websites-settings" role="tabpanel" aria-labelledby="websites-tab">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>Managed Websites</h5>
+                                    <button class="btn btn-sm btn-success" id="add-website-btn">
+                                        <i class="bi bi-plus-circle me-1"></i> Add Website
+                                    </button>
+                                </div>
+                                
+                                <!-- Primary Website -->
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Primary Website</h5>
+                                        <div>
+                                            <span class="badge bg-success me-1">Active</span>
+                                            <span class="badge bg-primary">Primary</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Website URL</label>
+                                                    <input type="url" class="form-control" id="primary-website-url" value="https://www.yourwebsite.com">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">CMS Type</label>
+                                                    <select class="form-select" id="primary-website-cms">
+                                                        <option selected>WordPress</option>
+                                                        <option>Shopify</option>
+                                                        <option>Custom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Admin URL</label>
+                                                    <input type="url" class="form-control" id="primary-website-admin" value="https://www.yourwebsite.com/wp-admin">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">API Key</label>
+                                                    <input type="password" class="form-control" id="primary-website-api-key" value="">
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button type="button" class="btn btn-primary" id="save-primary-website-btn">Save</button>
+                                                <button type="button" class="btn btn-outline-secondary" id="test-primary-website-btn">Test Connection</button>
+                                                <button type="button" class="btn btn-outline-danger" id="remove-primary-website-btn">Remove</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Improvement Cycle Settings -->
+                            <div class="tab-pane fade" id="cycle-settings" role="tabpanel" aria-labelledby="cycle-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Continuous Improvement Cycle Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="default-cycle-duration" class="form-label">Default Cycle Duration (days)</label>
+                                                <input type="number" class="form-control" id="default-cycle-duration" value="30" min="7" max="90">
+                                                <div class="form-text">Default duration for improvement cycles</div>
+                                            </div>
+                                            
+                                            <h6 class="mt-4 mb-3">Phase Duration Settings (days)</h6>
+                                            <div class="row">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="analysis-phase-duration" class="form-label">Analysis</label>
+                                                    <input type="number" class="form-control" id="analysis-phase-duration" value="5" min="1" max="30">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="planning-phase-duration" class="form-label">Planning</label>
+                                                    <input type="number" class="form-control" id="planning-phase-duration" value="5" min="1" max="30">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="implementation-phase-duration" class="form-label">Implementation</label>
+                                                    <input type="number" class="form-control" id="implementation-phase-duration" value="15" min="1" max="60">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="evaluation-phase-duration" class="form-label">Evaluation</label>
+                                                    <input type="number" class="form-control" id="evaluation-phase-duration" value="5" min="1" max="30">
+                                                </div>
+                                            </div>
+                                            
+                                            <h6 class="mt-4 mb-3">Feedback Loop Thresholds</h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="performance-threshold" class="form-label">Performance Threshold</label>
+                                                    <input type="number" class="form-control" id="performance-threshold" value="0.8" min="0" max="1" step="0.1">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="engagement-threshold" class="form-label">Engagement Threshold</label>
+                                                    <input type="number" class="form-control" id="engagement-threshold" value="0.7" min="0" max="1" step="0.1">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="conversion-threshold" class="form-label">Conversion Threshold</label>
+                                                    <input type="number" class="form-control" id="conversion-threshold" value="0.5" min="0" max="1" step="0.1">
+                                                </div>
+                                            </div>
+                                            
+                                            <h6 class="mt-4 mb-3">Acceleration Strategy</h6>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="acceleration-enabled" checked>
+                                                <label class="form-check-label" for="acceleration-enabled">Enable Acceleration Strategy</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="acceleration-threshold" class="form-label">Acceleration Threshold</label>
+                                                <input type="number" class="form-control" id="acceleration-threshold" value="0.9" min="0" max="1" step="0.1">
+                                                <div class="form-text">Threshold for triggering acceleration strategies</div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-primary" id="save-cycle-settings-btn">Save Cycle Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Compliance Settings -->
+                            <div class="tab-pane fade" id="compliance-settings" role="tabpanel" aria-labelledby="compliance-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Compliance Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="gdpr-compliance" checked>
+                                                <label class="form-check-label" for="gdpr-compliance">GDPR Compliance</label>
+                                                <div class="form-text">Enable GDPR compliance features</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="ccpa-compliance" checked>
+                                                <label class="form-check-label" for="ccpa-compliance">CCPA Compliance</label>
+                                                <div class="form-text">Enable CCPA compliance features</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="ftc-disclosure" checked>
+                                                <label class="form-check-label" for="ftc-disclosure">FTC Disclosure Requirements</label>
+                                                <div class="form-text">Enable FTC disclosure compliance for affiliate marketing</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="accessibility-standard" class="form-label">Accessibility Standards</label>
+                                                <select class="form-select" id="accessibility-standard">
+                                                    <option value="WCAG 2.0">WCAG 2.0</option>
+                                                    <option value="WCAG 2.1" selected>WCAG 2.1</option>
+                                                    <option value="WCAG 2.2">WCAG 2.2</option>
+                                                </select>
+                                                <div class="form-text">Level of accessibility compliance</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-compliance-settings-btn">Save Compliance Settings</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Backup Settings -->
+                            <div class="tab-pane fade" id="backup-settings" role="tabpanel" aria-labelledby="backup-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Recovery and Backup Settings</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="backup-frequency" class="form-label">Backup Frequency</label>
+                                                <select class="form-select" id="backup-frequency">
+                                                    <option value="hourly">Hourly</option>
+                                                    <option value="daily" selected>Daily</option>
+                                                    <option value="weekly">Weekly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                </select>
+                                                <div class="form-text">How often to back up system data</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="storage-location" class="form-label">Backup Storage Location</label>
+                                                <select class="form-select" id="storage-location">
+                                                    <option value="local" selected>Local Storage</option>
+                                                    <option value="cloud">Cloud Storage</option>
+                                                    <option value="both">Both Local and Cloud</option>
+                                                </select>
+                                                <div class="form-text">Where to store backups</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="max-recovery-attempts" class="form-label">Max Recovery Attempts</label>
+                                                <input type="number" class="form-control" id="max-recovery-attempts" value="3" min="1" max="10">
+                                                <div class="form-text">Maximum number of automatic recovery attempts</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="health-check-interval" class="form-label">Health Check Interval (minutes)</label>
+                                                <input type="number" class="form-control" id="health-check-interval" value="60" min="5" max="1440">
+                                                <div class="form-text">How often to perform system health checks</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-backup-settings-btn">Save Backup Settings</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="backup-now-btn">Backup Now</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- UI Settings -->
+                            <div class="tab-pane fade" id="ui-settings" role="tabpanel" aria-labelledby="ui-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>User Interface Customization</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="ui-theme" class="form-label">Dashboard Theme</label>
+                                                <select class="form-select" id="ui-theme">
+                                                    <option value="light" selected>Light</option>
+                                                    <option value="dark">Dark</option>
+                                                    <option value="auto">Auto (System Preference)</option>
+                                                </select>
+                                                <div class="form-text">Visual theme for the operator dashboard</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="custom-logo" class="form-label">Custom Logo</label>
+                                                <input type="file" class="form-control" id="custom-logo" accept="image/*">
+                                                <div class="form-text">Upload your organization logo (max 2MB)</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ui-layout" class="form-label">Dashboard Layout</label>
+                                                <select class="form-select" id="ui-layout">
+                                                    <option value="default" selected>Default</option>
+                                                    <option value="compact">Compact</option>
+                                                    <option value="expanded">Expanded</option>
+                                                </select>
+                                                <div class="form-text">Customization of dashboard layout</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ui-language" class="form-label">Language</label>
+                                                <select class="form-select" id="ui-language">
+                                                    <option value="en" selected>English</option>
+                                                    <option value="es">Spanish</option>
+                                                    <option value="fr">French</option>
+                                                    <option value="de">German</option>
+                                                </select>
+                                                <div class="form-text">Interface language preference</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" id="save-ui-settings-btn">Save UI Settings</button>
+                                            <button type="button" class="btn btn-outline-secondary" id="reset-ui-settings-btn">Reset to Default</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Settings -->
+                            <div class="tab-pane fade" id="advanced-settings" role="tabpanel" aria-labelledby="advanced-tab">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Advanced Settings</h5>
+                                        <span class="badge bg-warning">Use with caution</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <h6 class="mb-3">Feature Flags</h6>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="experimental-features">
+                                                <label class="form-check-label" for="experimental-features">Enable Experimental Features</label>
+                                                <div class="form-text">Enable features that are still in development</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="beta-features">
+                                                <label class="form-check-label" for="beta-features">Enable Beta Features</label>
+                                                <div class="form-text">Enable features that are in beta testing</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="debug-mode">
+                                                <label class="form-check-label" for="debug-mode">Debug Mode</label>
+                                                <div class="form-text">Enable detailed logging and debugging tools</div>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="performance-metrics" checked>
+                                                <label class="form-check-label" for="performance-metrics">Performance Metrics Collection</label>
+                                                <div class="form-text">Enable detailed performance tracking</div>
+                                            </div>
+                                            
+                                            <h6 class="mt-4 mb-3">Workflow Timeout Settings (seconds)</h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="default-timeout" class="form-label">Default Timeout</label>
+                                                    <input type="number" class="form-control" id="default-timeout" value="300" min="60" max="3600">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="content-generation-timeout" class="form-label">Content Generation</label>
+                                                    <input type="number" class="form-control" id="content-generation-timeout" value="600" min="60" max="3600">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="seo-analysis-timeout" class="form-label">SEO Analysis</label>
+                                                    <input type="number" class="form-control" id="seo-analysis-timeout" value="300" min="60" max="3600">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="alert alert-warning mt-3">
+                                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                                Changing these settings may affect system stability and performance. Only modify if you understand the implications.
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-primary" id="save-advanced-settings-btn">Save Advanced Settings</button>
+                                            <button type="button" class="btn btn-outline-danger" id="reset-advanced-settings-btn">Reset to Default</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Save All Settings -->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+                                <button type="button" class="btn btn-lg btn-success" id="save-all-settings-btn">
+                                    <i class="bi bi-save me-2"></i>Save All Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container" class="position-fixed top-0 end-0 p-3"></div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="operator_dashboard_fixed.js"></script>
+    <script src="analytics_dashboard.js"></script>
+    <script src="orchestrator_dashboard.js"></script>
+    <script src="settings_manager.js"></script>
+</body>
+</html>

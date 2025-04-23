@@ -1,0 +1,42 @@
+{
+  "schema_version": "v0.9",
+  "name": "Email Agent",
+  "description": "An agent responsible for email marketing tasks including campaign creation, automation, list management, and performance analysis.",
+  "contact_email": "email-agent@example.com",
+  "legal_info_url": "https://example.com/gams/email/legal",
+  "capabilities": [
+    {
+      "type": "campaign_creation",
+      "description": "Create and manage email marketing campaigns.",
+      "api": { "type": "openapi", "url": "/api/agents/email/campaign_creation/openapi.json" }
+    },
+    {
+      "type": "automation",
+      "description": "Configure email automation workflows and triggers.",
+      "api": { "type": "openapi", "url": "/api/agents/email/automation/openapi.json" }
+    },
+    {
+      "type": "list_management",
+      "description": "Manage subscriber lists, segmentation, and targeting.",
+      "api": { "type": "openapi", "url": "/api/agents/email/list_management/openapi.json" }
+    },
+    {
+      "type": "performance_analysis",
+      "description": "Analyze email campaign performance metrics.",
+      "api": { "type": "openapi", "url": "/api/agents/email/performance/openapi.json" }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "email:campaign_creation:read", "email:campaign_creation:write",
+        "email:automation:read", "email:automation:write",
+        "email:list_management:read", "email:list_management:write",
+        "email:performance:read"
+      ]
+    }
+  }
+}

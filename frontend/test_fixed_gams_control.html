@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Control Test Page (Fixed)</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .status-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">GAMS Control Test Page (Fixed Version)</h1>
+        
+        <div class="alert alert-info">
+            <p>This page tests the fixed version of the GAMS control functionality.</p>
+            <p>Use the buttons below to test different aspects of the GAMS control system.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>System Status</h2>
+            <div class="status-section">
+                <div class="d-flex align-items-center mb-3">
+                    <h4 class="me-2 mb-0">Status:</h4>
+                    <span id="system-status-badge" class="badge bg-danger">Stopped</span>
+                </div>
+                <p id="system-status-text">System is currently stopped</p>
+            </div>
+            
+            <div class="mt-4">
+                <button id="gams-control-btn" class="btn btn-success btn-lg">
+                    <i class="bi bi-play-fill me-1"></i> Start GAMS
+                </button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Direct API Tests</h2>
+            <p>These buttons test the API endpoints directly:</p>
+            <div class="d-flex gap-2">
+                <button id="direct-test-btn" class="btn btn-primary">
+                    Test with Fetch API
+                </button>
+                <button id="direct-api-test" class="btn btn-secondary">
+                    Test with XMLHttpRequest
+                </button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Console Output</h2>
+            <p>Check the browser console (F12) for detailed logs.</p>
+            <div class="alert alert-secondary">
+                <pre id="console-output">Console output will appear here...</pre>
+            </div>
+            <button id="clear-console" class="btn btn-outline-secondary btn-sm">Clear Console</button>
+        </div>
+    </div>
+    
+    <!-- Toast container for notifications -->
+    <div id="toast-container"></div>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom console logger -->
+    <script>
+        // Override console methods to also display in the UI
+        const consoleOutput = document.getElementById('console-output');
+        const originalConsole = {
+            log: console.log,
+            error: console.error,
+            warn: console.warn,
+            info: console.info
+        };
+        
+        function formatLogMessage(type, ...args) {
+            const timestamp = new Date().toLocaleTimeString();
+            return `[${timestamp}] [${type}] ${args.map(arg => {
+                if (typeof arg === 'object') {
+                    try {
+                        return JSON.stringify(arg);
+                    } catch (e) {
+                        return String(arg);
+                    }
+                }
+                return String(arg);
+            }).join(' ')}`;
+        }
+        
+        console.log = function(...args) {
+            const message = formatLogMessage('LOG', ...args);
+            consoleOutput.textContent += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            originalConsole.log.apply(console, args);
+        };
+        
+        console.error = function(...args) {
+            const message = formatLogMessage('ERROR', ...args);
+            consoleOutput.textContent += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            originalConsole.error.apply(console, args);
+        };
+        
+        console.warn = function(...args) {
+            const message = formatLogMessage('WARN', ...args);
+            consoleOutput.textContent += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            originalConsole.warn.apply(console, args);
+        };
+        
+        console.info = function(...args) {
+            const message = formatLogMessage('INFO', ...args);
+            consoleOutput.textContent += message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            originalConsole.info.apply(console, args);
+        };
+        
+        // Clear console button
+        document.getElementById('clear-console').addEventListener('click', function() {
+            consoleOutput.textContent = '';
+        });
+    </script>
+    
+    <!-- Initialize dashboard state for the test page -->
+    <script>
+        // Mock API base URL
+        const API_BASE_URL = '/api/operator';
+        
+        // Mock dashboard state
+        const dashboardState = {
+            systemStatus: {
+                running: false,
+                lastStarted: null
+            }
+        };
+        
+        // Mock CONFIG object
+        const CONFIG = {
+            refreshIntervals: {
+                approvals: 60000,
+                financial: 300000
+            },
+            toastDuration: 5000
+        };
+    </script>
+    
+    <!-- Load the fixed dashboard JS -->
+    <script src="/operator_dashboard_fixed.js"></script>
+</body>
+</html>

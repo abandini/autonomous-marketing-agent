@@ -13,11 +13,7 @@ import os
 
 from core.agents.base_agent import BaseAgent
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configure logging (configured centrally in main application)
 logger = logging.getLogger(__name__)
 
 class SEOAgent(BaseAgent):

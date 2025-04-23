@@ -15,11 +15,7 @@ from typing import Dict, List, Any, Optional, Tuple
 
 from core.agents.base_agent import BaseAgent
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configure logging (configured centrally in main application)
 logger = logging.getLogger(__name__)
 
 class AffiliateAgent(BaseAgent):
@@ -129,102 +125,8 @@ class AffiliateAgent(BaseAgent):
         Returns:
             Dict containing search results
         """
-        if not params:
-            return {
-                "status": "error",
-                "message": "No search parameters provided"
-            }
-            
-        platform = params.get("platform")
-        
-        if not platform:
-            return {
-                "status": "error",
-                "message": "No platform specified"
-            }
-            
-        if platform not in self.platforms:
-            return {
-                "status": "error",
-                "message": f"Not connected to platform: {platform}"
-            }
-            
-        # In a real implementation, this would call the platform's API
-        # For now, we'll simulate search results
-        
-        # Simulate search delay
-        await asyncio.sleep(0.5)
-        
-        # Generate simulated results
-        results = []
-        categories = ["health", "fitness", "wealth", "relationships", "self-help", "tech"]
-        
-        category = params.get("category")
-        keywords = params.get("keywords", "")
-        min_commission = float(params.get("min_commission", 0))
-        max_price = float(params.get("max_price", 1000))
-        
-        # Filter by category if specified
-        if category and category not in categories:
-            return {
-                "status": "error",
-                "message": f"Invalid category: {category}"
-            }
-            
-        # Generate random products
-        for i in range(10):
-            product_category = category if category else random.choice(categories)
-            commission_rate = random.uniform(5, 50)
-            price = random.uniform(10, 200)
-            
-            # Apply filters
-            if commission_rate < min_commission or price > max_price:
-                continue
-                
-            # Check keywords match
-            if keywords and keywords.lower() not in product_category.lower():
-                continue
-                
-            product_id = f"{platform}_{product_category}_{i}"
-            
-            product = {
-                "id": product_id,
-                "name": f"{product_category.title()} Product {i}",
-                "description": f"This is a great {product_category} product with many benefits.",
-                "price": price,
-                "commission_rate": commission_rate,
-                "commission_type": "percentage",
-                "category": product_category,
-                "platform": platform,
-                "url": f"https://{platform}.com/product/{product_id}",
-                "popularity": random.uniform(1, 10),
-                "conversion_rate": random.uniform(1, 5),
-                "gravity": random.randint(10, 100) if platform == "clickbank" else None
-            }
-            
-            results.append(product)
-            
-            # Store product data
-            self.products[product_id] = product
-            
-        # Sort results if specified
-        sort_by = params.get("sort_by")
-        
-        if sort_by == "popularity":
-            results.sort(key=lambda x: x["popularity"], reverse=True)
-        elif sort_by == "commission":
-            results.sort(key=lambda x: x["commission_rate"], reverse=True)
-        elif sort_by == "price":
-            results.sort(key=lambda x: x["price"])
-        elif sort_by == "conversion":
-            results.sort(key=lambda x: x["conversion_rate"], reverse=True)
-            
-        return {
-            "status": "success",
-            "platform": platform,
-            "count": len(results),
-            "results": results
-        }
+        # Proxy to SEMrush MCP service
+        return await self.call_mcp("mcp.semrush", "search_products", params)
         
     async def analyze_product(self, params: Dict[str, Any] = None) -> Dict[str, Any]:
         """

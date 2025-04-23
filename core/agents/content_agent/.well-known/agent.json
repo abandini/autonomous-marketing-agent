@@ -1,0 +1,63 @@
+{
+  "schema_version": "v0.9",
+  "name": "Content Agent",
+  "description": "An agent responsible for content creation and management, including content generation, optimization, planning, and performance analysis.",
+  "contact_email": "content-agent@example.com",
+  "legal_info_url": "https://example.com/gams/content/legal",
+  "capabilities": [
+    {
+      "type": "content_generation",
+      "description": "Generate content based on specified parameters including content type, topic, keywords, tone, and length",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/generation/openapi.json"
+      }
+    },
+    {
+      "type": "content_optimization",
+      "description": "Optimize content for specific platforms and audiences, including readability, engagement, and conversion optimization",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/optimization/openapi.json"
+      }
+    },
+    {
+      "type": "content_planning",
+      "description": "Plan content calendars for specified periods, including topic selection, content type distribution, and scheduling",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/planning/openapi.json"
+      }
+    },
+    {
+      "type": "content_performance",
+      "description": "Analyze content performance metrics, including views, engagement, conversions, and ROI",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/performance/openapi.json"
+      }
+    },
+    {
+      "type": "content_brief",
+      "description": "Create detailed content briefs for content creation, including topic research, outline generation, and keyword recommendations",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/brief/openapi.json"
+      }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "content:generation:read", "content:generation:write",
+        "content:optimization:read", "content:optimization:write",
+        "content:planning:read", "content:planning:write",
+        "content:performance:read",
+        "content:brief:read", "content:brief:write"
+      ]
+    }
+  }
+}

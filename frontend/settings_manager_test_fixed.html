@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMS Settings Manager Test</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .theme-light {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+        }
+        
+        .theme-dark {
+            --bg-color: #212529;
+            --text-color: #f8f9fa;
+            --card-bg: #343a40;
+            --border-color: #495057;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+        }
+        
+        .nav-tabs .nav-link.active {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body class="theme-light">
+    <div class="container mt-4">
+        <h1>GAMS Settings Manager Test</h1>
+        
+        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+        
+        <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button" role="tab" aria-controls="notifications" aria-selected="false">Notifications</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="api-tab" data-bs-toggle="tab" data-bs-target="#api" type="button" role="tab" aria-controls="api" aria-selected="false">API</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing" type="button" role="tab" aria-controls="marketing" aria-selected="false">Marketing</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="integrations-tab" data-bs-toggle="tab" data-bs-target="#integrations" type="button" role="tab" aria-controls="integrations" aria-selected="false">Integrations</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ui-tab" data-bs-toggle="tab" data-bs-target="#ui" type="button" role="tab" aria-controls="ui" aria-selected="false">UI</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content p-4 border border-top-0 rounded-bottom" id="settingsTabsContent">
+            <!-- General Settings -->
+            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                <h3>General Settings</h3>
+                <form id="general-settings-form">
+                    <div class="mb-3">
+                        <label for="system-name" class="form-label">System Name</label>
+                        <input type="text" class="form-control" id="system-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="operator-email" class="form-label">Operator Email</label>
+                        <input type="email" class="form-control" id="operator-email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="log-level" class="form-label">Log Level</label>
+                        <select class="form-select" id="log-level">
+                            <option value="debug">Debug</option>
+                            <option value="info">Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="refresh-interval" class="form-label">Refresh Interval (seconds)</label>
+                        <input type="number" class="form-control" id="refresh-interval" min="10" max="3600">
+                    </div>
+                    <div class="mb-3">
+                        <label for="max-concurrent-tasks" class="form-label">Max Concurrent Tasks</label>
+                        <input type="number" class="form-control" id="max-concurrent-tasks" min="1" max="20">
+                    </div>
+                    <div class="mb-3">
+                        <label for="timezone" class="form-label">Timezone</label>
+                        <select class="form-select" id="timezone">
+                            <option value="America/New_York">America/New_York</option>
+                            <option value="America/Chicago">America/Chicago</option>
+                            <option value="America/Denver">America/Denver</option>
+                            <option value="America/Los_Angeles">America/Los_Angeles</option>
+                            <option value="Europe/London">Europe/London</option>
+                            <option value="Europe/Paris">Europe/Paris</option>
+                            <option value="Asia/Tokyo">Asia/Tokyo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save General Settings</button>
+                </form>
+            </div>
+            
+            <!-- Notification Settings -->
+            <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+                <h3>Notification Settings</h3>
+                <form id="notification-settings-form">
+                    <div class="mb-3">
+                        <label for="notification-email" class="form-label">Notification Email</label>
+                        <input type="email" class="form-control" id="notification-email">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="system-alerts">
+                        <label class="form-check-label" for="system-alerts">System Alerts</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="performance-reports">
+                        <label class="form-check-label" for="performance-reports">Performance Reports</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="approval-requests">
+                        <label class="form-check-label" for="approval-requests">Approval Requests</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Notification Settings</button>
+                </form>
+            </div>
+            
+            <!-- API Settings -->
+            <div class="tab-pane fade" id="api" role="tabpanel" aria-labelledby="api-tab">
+                <h3>API Settings</h3>
+                <form id="api-settings-form">
+                    <div class="mb-3">
+                        <label for="api-key" class="form-label">API Key</label>
+                        <input type="password" class="form-control" id="api-key">
+                    </div>
+                    <div class="mb-3">
+                        <label for="api-endpoint" class="form-label">API Endpoint</label>
+                        <input type="url" class="form-control" id="api-endpoint">
+                    </div>
+                    <div class="mb-3">
+                        <label for="api-timeout" class="form-label">Timeout (seconds)</label>
+                        <input type="number" class="form-control" id="api-timeout" min="5" max="120">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rate-limiting">
+                        <label class="form-check-label" for="rate-limiting">Enable Rate Limiting</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save API Settings</button>
+                    <button type="button" class="btn btn-secondary test-connection-btn" data-service="API">Test Connection</button>
+                </form>
+            </div>
+            
+            <!-- Marketing Settings -->
+            <div class="tab-pane fade" id="marketing" role="tabpanel" aria-labelledby="marketing-tab">
+                <h3>Marketing Settings</h3>
+                <form id="marketing-settings-form">
+                    <div class="mb-3">
+                        <label for="organic-allocation" class="form-label">Organic Allocation (%)</label>
+                        <input type="number" class="form-control" id="organic-allocation" min="0" max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="paid-allocation" class="form-label">Paid Allocation (%)</label>
+                        <input type="number" class="form-control" id="paid-allocation" min="0" max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-allocation" class="form-label">Email Allocation (%)</label>
+                        <input type="number" class="form-control" id="email-allocation" min="0" max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="affiliate-allocation" class="form-label">Affiliate Allocation (%)</label>
+                        <input type="number" class="form-control" id="affiliate-allocation" min="0" max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="default-campaign-budget" class="form-label">Default Campaign Budget ($)</label>
+                        <input type="number" class="form-control" id="default-campaign-budget" min="100">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Marketing Settings</button>
+                </form>
+            </div>
+            
+            <!-- Integration Settings -->
+            <div class="tab-pane fade" id="integrations" role="tabpanel" aria-labelledby="integrations-tab">
+                <h3>Integration Settings</h3>
+                <form id="integration-settings-form">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="ga-enabled">
+                                <label class="form-check-label" for="ga-enabled">Google Analytics</label>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="ga-tracking-id" class="form-label">Tracking ID</label>
+                                <input type="text" class="form-control" id="ga-tracking-id">
+                            </div>
+                            <button type="button" class="btn btn-secondary test-connection-btn" data-service="Google Analytics">Test Connection</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="amazon-enabled">
+                                <label class="form-check-label" for="amazon-enabled">Amazon Associates</label>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="amazon-associate-id" class="form-label">Associate ID</label>
+                                <input type="text" class="form-control" id="amazon-associate-id">
+                            </div>
+                            <button type="button" class="btn btn-secondary test-connection-btn" data-service="Amazon Associates">Test Connection</button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Save Integration Settings</button>
+                </form>
+            </div>
+            
+            <!-- UI Settings -->
+            <div class="tab-pane fade" id="ui" role="tabpanel" aria-labelledby="ui-tab">
+                <h3>UI Settings</h3>
+                <form id="ui-settings-form">
+                    <div class="mb-3">
+                        <label for="theme-switcher" class="form-label">Theme</label>
+                        <select class="form-select" id="theme-switcher">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="layout-selector" class="form-label">Layout</label>
+                        <select class="form-select" id="layout-selector">
+                            <option value="default">Default</option>
+                            <option value="compact">Compact</option>
+                            <option value="expanded">Expanded</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="language-selector" class="form-label">Language</label>
+                        <select class="form-select" id="language-selector">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save UI Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Mock data to prevent console errors -->
+    <script>
+        // Mock data and functions to prevent console errors
+        window.loadPerformanceData = function() {
+            console.log("Mock performance data loaded");
+            return Promise.resolve({
+                organic: { visits: 1250, conversions: 45, revenue: 3200 },
+                paid: { visits: 850, conversions: 32, revenue: 2800 },
+                email: { visits: 620, conversions: 28, revenue: 1900 },
+                affiliate: { visits: 430, conversions: 18, revenue: 1200 }
+            });
+        };
+        
+        window.loadRecentActivity = function() {
+            console.log("Mock recent activity loaded");
+            return Promise.resolve([
+                { type: 'campaign', name: 'Summer Sale', date: '2025-04-01', status: 'active' },
+                { type: 'content', name: 'SEO Guide', date: '2025-03-28', status: 'published' },
+                { type: 'email', name: 'Newsletter', date: '2025-03-25', status: 'sent' }
+            ]);
+        };
+        
+        window.loadSystemStatus = function() {
+            console.log("Mock system status loaded");
+            return Promise.resolve({
+                status: 'operational',
+                lastUpdate: '2025-04-05T13:45:00',
+                components: {
+                    api: 'operational',
+                    database: 'operational',
+                    scheduler: 'operational'
+                }
+            });
+        };
+        
+        window.loadTasksData = function() {
+            console.log("Mock tasks data loaded");
+            return Promise.resolve([
+                { id: 1, name: 'Content Optimization', status: 'in_progress', completion: 65 },
+                { id: 2, name: 'Email Campaign', status: 'pending', completion: 0 },
+                { id: 3, name: 'Social Media Posts', status: 'completed', completion: 100 }
+            ]);
+        };
+    </script>
+    
+    <!-- Settings Manager JS -->
+    <script src="settings_manager.js"></script>
+</body>
+</html>

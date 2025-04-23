@@ -5,20 +5,16 @@ This module implements the Content Agent that handles content creation,
 optimization, and management across various marketing channels.
 """
 
-import logging
 import asyncio
 from typing import Dict, List, Any, Optional
 import json
 import os
 from datetime import datetime
+import logging
 
 from core.agents.base_agent import BaseAgent
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configure logging (configured centrally in main application)
 logger = logging.getLogger(__name__)
 
 class ContentAgent(BaseAgent):

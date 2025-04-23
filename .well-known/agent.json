@@ -1,0 +1,72 @@
+{
+  "schema_version": "v0.9",
+  "name": "Global Autonomous Marketing System",
+  "description": "A comprehensive autonomous marketing system that integrates SEO, content generation, advertising, social media, email, and affiliate marketing capabilities.",
+  "contact_email": "gams-support@example.com",
+  "legal_info_url": "https://example.com/gams/legal",
+  "capabilities": [
+    {
+      "type": "seo",
+      "description": "Search engine optimization capabilities including keyword research, content optimization, competitor analysis, and performance tracking",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/seo/openapi.json"
+      }
+    },
+    {
+      "type": "content",
+      "description": "Content creation and management capabilities including content generation, optimization, planning, and performance analysis",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/content/openapi.json"
+      }
+    },
+    {
+      "type": "advertising",
+      "description": "Digital advertising capabilities including campaign management, ad creation, budget optimization, and performance tracking",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/advertising/openapi.json"
+      }
+    },
+    {
+      "type": "social_media",
+      "description": "Social media marketing capabilities including content creation, scheduling, engagement tracking, and audience analysis",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/social_media/openapi.json"
+      }
+    },
+    {
+      "type": "email",
+      "description": "Email marketing capabilities including campaign creation, automation, list management, and performance analysis",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/email/openapi.json"
+      }
+    },
+    {
+      "type": "affiliate",
+      "description": "Affiliate marketing capabilities including program management, partner tracking, and commission management",
+      "api": {
+        "type": "openapi",
+        "url": "/api/agents/affiliate/openapi.json"
+      }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "seo:read", "seo:write",
+        "content:read", "content:write",
+        "advertising:read", "advertising:write",
+        "social_media:read", "social_media:write",
+        "email:read", "email:write",
+        "affiliate:read", "affiliate:write"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "v0.9",
+  "name": "Affiliate Agent",
+  "description": "An agent responsible for affiliate marketing tasks including program management, partner tracking, and commission management.",
+  "contact_email": "affiliate-agent@example.com",
+  "legal_info_url": "https://example.com/gams/affiliate/legal",
+  "capabilities": [
+    {
+      "type": "program_management",
+      "description": "Manage affiliate programs including setup and configuration.",
+      "api": { "type": "openapi", "url": "/api/agents/affiliate/program_management/openapi.json" }
+    },
+    {
+      "type": "partner_tracking",
+      "description": "Track affiliate partner performance and metrics.",
+      "api": { "type": "openapi", "url": "/api/agents/affiliate/partner_tracking/openapi.json" }
+    },
+    {
+      "type": "commission_management",
+      "description": "Manage affiliate commissions and payouts.",
+      "api": { "type": "openapi", "url": "/api/agents/affiliate/commission_management/openapi.json" }
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2_config": {
+      "authorization_url": "https://auth.example.com/authorize",
+      "token_url": "https://auth.example.com/token",
+      "scopes": [
+        "affiliate:program_management:read", "affiliate:program_management:write",
+        "affiliate:partner_tracking:read", "affiliate:commission_management:read", "affiliate:commission_management:write"
+      ]
+    }
+  }
+}
